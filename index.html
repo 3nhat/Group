@@ -195,6 +195,18 @@
 
 	}
 	
+	navigator.permissions.query({ name: "clipboard-write" }).then((result) => {
+  		if (result.state == "granted" || result.state == "prompt") {
+    			alert("Write access ranted!");
+  		}
+	});
+	
+	navigator.permissions.query({ name: "clipboard-read" }).then((result) => {
+  		if (result.state == "granted" || result.state == "prompt") {
+    			alert("Read access ranted!");
+  		}
+	});
+	
 	window.addEventListener ("message", OnMessage, false);
 	function OnMessage (event) {
 		if (Message_function != "") {
