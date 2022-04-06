@@ -197,14 +197,18 @@
 	
 	navigator.permissions.query({ name: "clipboard-write" }).then((result) => {
   		if (result.state == "granted" || result.state == "prompt") {
-    			alert("Write access ranted!");
-  		}
+    			
+  		} else {
+			alert("Chưa được cấp quyền ghi vào clipboard");
+		}
 	});
 	
 	navigator.permissions.query({ name: "clipboard-read" }).then((result) => {
   		if (result.state == "granted" || result.state == "prompt") {
-    			alert("Read access ranted!");
-  		}
+    			
+  		} else {
+			alert("Chưa được cấp quyền đọc clipboard");
+		}
 	});
 	
 	window.addEventListener ("message", OnMessage, false);
