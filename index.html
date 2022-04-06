@@ -101,6 +101,23 @@
 		left: 0;
 	}
 	
+	.VirtualButton {
+		width: 10vw; 
+		height: 10vw; 
+		position: absolute; 
+		border-radius: 50%; 
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+		font-weight: 600; 
+		color: red; 
+		z-index: 98; 
+		padding: 2px; 
+		opacity: 0.8; 
+		top: 30%; 
+		display: flex; 
+		justify-content: center; 
+		align-items: center;
+	}
+	
 	/*
 	@media (orientation: landscape) {
   		.landscape {
@@ -125,6 +142,7 @@
           </audio>
 </div>
 <div id='landscape' class='landscape'>Chương trình chỉ hoạt động theo chiều dọc của máy</div>
+<div id='VirtualButton' class='VirtualButton'>3IE</div>
 <div id="Gioithieu">
 	<div id='chaomung'>Chào mừng các bạn đã ghé thăm website Công ty Cổ phần tập đoàn 3 Nhất </div>
 </div>
@@ -160,6 +178,22 @@
 	var Message_variable = "";
 	
 	var Upload_function = "";
+	
+	window.onload = function() {
+		var box = EID('VirtualButton');
+	  	box.addEventListener('touchmove', function(e) {
+	    		var touchLocation = e.targetTouches[0];
+
+	    		box.style.left = touchLocation.pageX + 'px';
+	    		box.style.top = touchLocation.pageY + 'px';
+	  	})
+
+	  	box.addEventListener('touchend', function(e) {
+	    		var x = parseInt(box.style.left);
+	    		var y = parseInt(box.style.top);
+	  	})
+
+	}
 	
 	window.addEventListener ("message", OnMessage, false);
 	function OnMessage (event) {
