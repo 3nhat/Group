@@ -184,8 +184,8 @@
 	  	box.addEventListener('touchmove', function(e) {
 	    		var touchLocation = e.targetTouches[0];
 
-	    		box.style.left = touchLocation.pageX + 'px';
-	    		box.style.top = touchLocation.pageY + 'px';
+	    		box.style.left = (touchLocation.pageX - box.offsetWidth/2) 'px';
+	    		box.style.top = (touchLocation.pageY - box.offsetHeight/2) 'px';
 	  	})
 
 	  	box.addEventListener('touchend', function(e) {
