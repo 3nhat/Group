@@ -111,7 +111,7 @@
 
 </style>
 </head>
-<body onkeydown="return (event.keyCode != 116)" onclick="lock('portrait')" ontouchend="lock('portrait')">
+<body id="body">
 
 <div id="Audio" style="display:none">
 	<audio id="myAudio1">
@@ -175,7 +175,7 @@
 		}
 	}
 	
-
+/*
 	function lock (orientation) {
 		EID('Gioithieu').style.display = 'none';
 		
@@ -190,7 +190,7 @@
 		  screen.orientation.lock(orientation);
 	}
 
-	
+*/	
 	
 	window.addEventListener('DOMContentLoaded', (event) => {
     		RunFirst('get','slag','','','','');
