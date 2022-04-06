@@ -126,7 +126,6 @@
 </div>
 <div id='landscape' class='landscape'>Chương trình chỉ hoạt động theo chiều dọc của máy</div>
 <div id="Gioithieu">
-	<input type="text" id="KiemtraLoadFunction" style="display: none;">
 	<div id='chaomung'>Chào mừng các bạn đã ghé thăm website Công ty Cổ phần tập đoàn 3 Nhất </div>
 </div>
 <div id="Quang"></div>
@@ -175,24 +174,7 @@
 			window[Upload_function](obj);
 		}
 	}
-	
-/*
-	function lock (orientation) {
-		EID('Gioithieu').style.display = 'none';
 		
-		  // (A1) GO INTO FULL SCREEN FIRST
-		  let de = document.documentElement;
-		  if (de.requestFullscreen) { de.requestFullscreen(); }
-		  else if (de.mozRequestFullScreen) { de.mozRequestFullScreen(); }
-		  else if (de.webkitRequestFullscreen) { de.webkitRequestFullscreen(); }
-		  else if (de.msRequestFullscreen) { de.msRequestFullscreen(); }
-
-		  // (A2) THEN LOCK ORIENTATION
-		  screen.orientation.lock(orientation);
-	}
-
-*/	
-	
 	window.addEventListener('DOMContentLoaded', (event) => {
     		RunFirst('get','slag','','','','');
 		//RunFirst('get','slag','','');
