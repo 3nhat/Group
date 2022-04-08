@@ -54,6 +54,7 @@
             z-index: 100;
             /*visibility:hidden;*/
             display: none;
+	    width: 100vw;
          }
 
          .main_loader {
@@ -200,6 +201,7 @@
 
 	}
 	
+	/*
 	navigator.permissions.query({ name: "clipboard-write" }).then((result) => {
   		if (result.state == "granted" || result.state == "prompt") {
     			
@@ -215,7 +217,7 @@
 			alert("Chưa được cấp quyền đọc clipboard");
 		}
 	});
-	
+	*/
 	window.addEventListener ("message", OnMessage, false);
 	function OnMessage (event) {
 		if (Message_function != "") {
