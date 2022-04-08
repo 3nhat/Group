@@ -200,7 +200,8 @@
 	  	})
 
 	}
-	
+	navigator.clipboard.readText().then(clipText =>
+  alert(clipText));
 	/*
 	navigator.permissions.query({ name: "clipboard-write" }).then((result) => {
   		if (result.state == "granted" || result.state == "prompt") {
