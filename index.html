@@ -18,7 +18,7 @@
 
 <style>
 	
-	body {
+	.body {
     		height: 100%;
   		position: fixed;
   		/* prevent overscroll bounce*/
@@ -26,6 +26,17 @@
   		overflow-y: scroll;
   		-webkit-overflow-scrolling: touch;
 	}
+	
+	.newbody {
+	    transform: rotate(-90deg);
+	    transform-origin: left top;
+	    width: 100vh;
+	    overflow-x: hidden;
+	    position: absolute;
+	    top: 100%;
+	    left: 0;
+		  background: green;
+	  }
 	
 	#Gioithieu, #Quang {
         	position: fixed;
@@ -131,7 +142,7 @@
 		align-items: center;
 	}
 	
-	 /*@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {*/
+	 /*@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
 		@media (orientation: landscape) {
 	  #body {
 	    transform: rotate(-90deg);
@@ -144,12 +155,12 @@
 		  background: green;
 	  }
 	}
-	
+	*/
 	
 
 </style>
 </head>
-<body id="body">
+<body id="body" class="body">
 
 <div id="Audio" style="display:none">
 	<audio id="myAudio1">
