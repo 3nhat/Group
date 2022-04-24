@@ -52,6 +52,25 @@
     		pointer-events:none;
 	}
 	
+	.quangcao {
+		position: relative;
+        	/*border: solid;*/
+        	width: 100vw;
+        	height: 100vh;
+        	left: 0px;
+        	top: 0px;
+		z-index: 105;
+	}
+	.quangcao_control {
+		position: absolute;
+        	/*border: solid;*/
+        	width: 100%;
+        	height: 100vh;
+        	right: 0px;
+        	top: 0px;
+		background: red;
+	}
+	
 	#Gioithieu, #Quang {
         	position: relative;
         	/*border: solid;*/
@@ -259,6 +278,10 @@ margin: auto;
         </div>
 
     </div>
+</div>
+<div id="quangcao" class="quangcao">
+	<div id="quangcao_control"></div>
+	<iframe id="quangcao_control"></iframe>
 </div>
 <div id="Quang"></div>
 <div id="LuuTam"></div>
