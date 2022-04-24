@@ -52,14 +52,80 @@
 	}
 	
 	#Gioithieu, #Quang {
-        	position: fixed;
+        	position: relative;
         	/*border: solid;*/
         	width: 100%;
         	height: 100vh;
         	left: 0px;
         	top: 0px;
-        	background: white; 
+        	background: rgb(30, 15, 1);
+    		display: flex;
+    		flex-direction: row; 
+    		text-align: center; 
+    		flex-wrap: wrap;
+		    
     	}
+	
+	.trangbia{
+margin: auto;
+border-radius: 50%;
+
+border: 5px solid white;
+padding: 10px;
+
+}
+
+.trangbia_1{
+z-index: -1
+
+}
+.trangbia_2{
+z-index: 1;
+margin-top: -30px;
+
+}
+.trangbia_3{
+z-index: 1;
+margin-top: -40px;
+
+}
+
+
+.trangbia_2a {
+  font   : bold 30px Century Gothic, Arial;
+width: 100%;
+margin: auto;
+
+}
+
+.trangbia_2b {
+  fill            : none;
+  stroke          : white;
+  stroke-width    : .5px;
+  stroke-linejoin : round;
+  animation       : 2s pulsate infinite;
+
+}
+
+.trangbia_3a {
+  font   : bold 20px Century Gothic, Arial;
+width: 100%;
+margin: auto;
+
+}
+
+.trangbia_3b {
+  fill            : none;
+  stroke          : red;
+  stroke-width    : .3px;
+  stroke-linejoin : round;
+  animation       : 2s pulsate infinite;
+
+}
+
+@keyframes pulsate {
+  50%{ stroke-width:3px }
+}
     
 	#Gioithieu {z-index: 99;}
     
@@ -176,7 +242,20 @@
 <div id='landscape' class='landscape'>Chương trình chỉ hoạt động theo chiều dọc của máy</div>
 <div id='VirtualButton' class='VirtualButton'>3IE</div>
 <div id="Gioithieu">
-	<div id='chaomung'>Chào mừng các bạn đã ghé thăm website Công ty Cổ phần tập đoàn 3 Nhất </div>
+    div class="trangbia">
+    	<img class="trangbia_1" src="https://3nhat.github.io/Image/3ngonnui.png">
+        <div class="trangbia_2">
+          <svg align="center" width="100%" class="trangbia_2a" viewBox="-70 20 300 70">
+              <text class="trangbia_2b" y="50">3 Nhất Corp</text>
+          </svg>
+        </div>
+        <div class="trangbia_3">
+          <svg align="center" width="100%" class="trangbia_3a" viewBox="-40 20 300 70">
+              <text class="trangbia_3b" y="50">Chất lượng, vững chắc</text>
+          </svg>
+        </div>
+
+    </div>
 </div>
 <div id="Quang"></div>
 <div id="LuuTam"></div>
