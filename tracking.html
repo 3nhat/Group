@@ -43,8 +43,8 @@ input, button {font-size: 30px;}
 <button onclick="myFunction()">3IE</button>
 </div>
 <div class="track">
-<div class="blur"></div>
-<iframe id="ifr" src="https://www.trackingmore.com/track/en/1Z861F1Y6794266149"></iframe>
+<div id ="blur" class="blur"></div>
+<iframe id="ifr" src=""></iframe>
 </div>
 
 <script>
@@ -55,12 +55,19 @@ input, button {font-size: 30px;}
 "https://www.trackingmore.com/ups-tracking.html?number=1ZW4V119DK50006193"
 https://www.trackingmore.com/track/en/289961113742?express=fedex*/
 function myFunction() {
+	document.getElementById("blur").style.background = "white";
    var v = document.getElementById("tracking").value;
    var arr = v.split(':');
    var str ="";
    if (arr[0].trim().toUpperCase()=='UPS') str = "https://www.trackingmore.com/ups-tracking.html?number=" + arr[1].trim();
    if (arr[0].trim().toUpperCase()=='FEDEX') str = "https://www.trackingmore.com/track/en/" + arr[1].trim() + "?express=fedex";
    document.getElementById("ifr").src = str;
+   setTimeout(myGreeting, 3000);
+   
+}
+
+function myGreeting() {
+  document.getElementById("blur").style.background = "";
 }
 </script>
 </body>
