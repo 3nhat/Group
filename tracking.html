@@ -4,24 +4,34 @@
 <style>
 iframe {
 	/*margin-top: -956px;*/
-	margin-top: -1056px;
+    margin-top: -1056px;
     margin-left: -30px;
     margin-right: -30px;
 	width: 720px;
-    /*height: 1548px;*/
-	height: 1648px;
+    /*height: 1568px;*/
+    height: 1648px;
     border: none;
     top: 0; left: 0;
+    z-index: -1;
 }
 .header {
 	margin-bottom: 20px;
     
 }
 .track {
+	position: relative;
 	width: 646px;
     height: 186px;
   	overflow: hidden;
 
+}
+.blur {
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 626px;
+    height: 186px;
+    z-index: 1;
 }
 input, button {font-size: 30px;}
 
@@ -29,10 +39,11 @@ input, button {font-size: 30px;}
 </head>
 <body>
 <div class = "header">
-<input type="text" id="tracking">
+<input type="text" id="tracking" placeholder="UPS/FEDEX : xxx">
 <button onclick="myFunction()">3IE</button>
 </div>
 <div class="track">
+<div class="blur"></div>
 <iframe id="ifr" src="https://www.trackingmore.com/track/en/1Z861F1Y6794266149"></iframe>
 </div>
 
