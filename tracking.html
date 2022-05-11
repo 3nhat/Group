@@ -4,23 +4,29 @@
 <style>
 iframe {
 	margin-top: -130vh;
-	width: 100%;
+	width: 720px;
     height: 215vh;
     border: none;
     top: 0; left: 0;
 }
-div {
+.header {
+	margin-bottom: 20px;
+}
+.track {
 	width: 100%;
     height: 30vh;
   	overflow: hidden;
 
 }
+
 </style>
 </head>
 <body>
+<div class = "header">
 <input type="text" id="tracking">
 <button onclick="myFunction()">tracking</button>
-<div>
+</div>
+<div class="track">
 <iframe id="ifr" src="https://www.trackingmore.com/track/en/1Z861F1Y6794266149"></iframe>
 </div>
 
