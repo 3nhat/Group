@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+iframe {
+	margin-top: -130vh;
+	width: 100%;
+    height: 215vh;
+    border: none;
+    top: 0; left: 0;
+}
+div {
+	width: 100%;
+    height: 30vh;
+  	overflow: hidden;
+
+}
+</style>
+</head>
+<body>
+<input type="text" id="tracking">
+<button onclick="myFunction()">tracking</button>
+<div>
+<iframe id="ifr" src="https://www.trackingmore.com/track/en/1Z861F1Y6794266149"></iframe>
+</div>
+
+<script>
+/*"dhl-tracking.html?number="
+"ups-tracking.html?number="
+"usps-tracking.html?number="
+"track/en/289961113742?express=fedex"
+"https://www.trackingmore.com/ups-tracking.html?number=1ZW4V119DK50006193"
+https://www.trackingmore.com/track/en/289961113742?express=fedex*/
+function myFunction() {
+   var v = document.getElementById("tracking").value;
+   var arr = v.split(':');
+   var str ="";
+   if (arr[0].trim().toUpperCase()=='UPS') str = "https://www.trackingmore.com/ups-tracking.html?number=" + arr[1].trim();
+   if (arr[0].trim().toUpperCase()=='FEDEX') str = "https://www.trackingmore.com/track/en/" + arr[1].trim() + "?express=fedex";
+   document.getElementById("ifr").src = str;
+}
+</script>
+</body>
+</html>
+
