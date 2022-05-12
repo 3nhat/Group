@@ -50,7 +50,19 @@ input, button {font-size: 45px;}
 
 <script>
 
-var vd = [["DH20220510094508212","https://www.trackingmore.com/track/en/272957186956?express=fedex"]];
+document.addEventListener("DOMContentLoaded", 		   function(event) { 
+  var url = window.location.href;
+  var arr = url.split('?ID=');
+  if (arr.length==2){
+  	var arr1 = arr[1].split('&zarsrc=');
+
+  	document.getElementById("tracking").value = arr1[0];
+  	myFunction();
+  }
+
+});
+
+var vd = [["DH20220510094508212","FEDEX:272957186956"]];
 /*"dhl-tracking.html?number="
 "ups-tracking.html?number="
 "usps-tracking.html?number="
@@ -69,7 +81,12 @@ function myFunction() {
    
    for (var i=0; i<vd.length; i++) {
    	if (v==vd[i][0]){
-    	str = vd[i][1];
+    	var str1 = vd[i][1];
+        
+        var arr = str1.split(':');
+
+       if (arr[0].trim().toUpperCase()=='UPS') str = "https://www.trackingmore.com/track/en/" + arr[1].trim();
+       if (arr[0].trim().toUpperCase()=='FEDEX') str = "https://www.trackingmore.com/track/en/" + arr[1].trim() + "?express=fedex";
         break;
     }
    }
@@ -82,6 +99,8 @@ function myGreeting() {
 	document.getElementById("blur").style.width = "130px";
   document.getElementById("blur").style.background = "";
 }
+
+//
 </script>
 </body>
 </html>
