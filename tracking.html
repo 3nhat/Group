@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +39,6 @@ input, button {font-size: 45px;}
 </style>
 </head>
 <body>
-<div id="w"></div>
 <div class = "header">
 <input type="text" id="tracking" placeholder="UPS/FEDEX : xxx">
 <button onclick="myFunction()">3IE</button>
@@ -49,8 +49,8 @@ input, button {font-size: 45px;}
 </div>
 
 <script>
-document.getElementById("blur").innerHTML = window.innerWidth;	
-	
+
+var vd = [["DH20220510094508212","https://www.trackingmore.com/track/en/272957186956?express=fedex"]];
 /*"dhl-tracking.html?number="
 "ups-tracking.html?number="
 "usps-tracking.html?number="
@@ -66,6 +66,13 @@ function myFunction() {
    var str ="";
    if (arr[0].trim().toUpperCase()=='UPS') str = "https://www.trackingmore.com/track/en/" + arr[1].trim();
    if (arr[0].trim().toUpperCase()=='FEDEX') str = "https://www.trackingmore.com/track/en/" + arr[1].trim() + "?express=fedex";
+   
+   for (var i=0; i<vd.length; i++) {
+   	if (v==vd[i][0]){
+    	str = vd[i][1];
+        break;
+    }
+   }
    document.getElementById("ifr").src = str;
    setTimeout(myGreeting, 3000);
    
