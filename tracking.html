@@ -38,6 +38,7 @@ input, button {font-size: 45px;}
 </style>
 </head>
 <body>
+<div id="w"></div>
 <div class = "header">
 <input type="text" id="tracking" placeholder="UPS/FEDEX : xxx">
 <button onclick="myFunction()">3IE</button>
@@ -48,6 +49,8 @@ input, button {font-size: 45px;}
 </div>
 
 <script>
+document.getElementById("blur").innerHTML = window.innerWidth;	
+	
 /*"dhl-tracking.html?number="
 "ups-tracking.html?number="
 "usps-tracking.html?number="
