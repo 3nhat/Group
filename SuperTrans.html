@@ -16,7 +16,24 @@ iframe {
 </head>
 <body>
 
-<iframe id="ifr" src="https://script.google.com/macros/s/AKfycbxV-wrkWRRc6jgS_gMG2SmCvUvQrPEGtrPAz5rbsD0lGR9lmGFq7mK_dbGFVgZ8R5V4/exec"></iframe>
+    <iframe id="ifr" src="https://script.google.com/macros/s/AKfycbxV-wrkWRRc6jgS_gMG2SmCvUvQrPEGtrPAz5rbsD0lGR9lmGFq7mK_dbGFVgZ8R5V4/exec"></iframe>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", 		   function(event) { 
+          var url = window.location.href;
+          var arr = url.split('?ID=');
+          if (arr.length==2){
+            var arr1 = arr[1].split('&zarsrc=');
+
+            var ID = arr1[0];
+            myFunction();
+          }
+
+        });
+
+
+        function myFunction() {
+        }  
+    </script>
 </body>
 </html>
