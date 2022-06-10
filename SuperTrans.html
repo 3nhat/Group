@@ -15,10 +15,8 @@ iframe {
 </style>
 </head>
 <body>
-
-    <iframe id="ifr" src="https://script.google.com/macros/s/AKfycbxV-wrkWRRc6jgS_gMG2SmCvUvQrPEGtrPAz5rbsD0lGR9lmGFq7mK_dbGFVgZ8R5V4/exec"></iframe>
-    <!--<iframe id="ifr" src="https://script.google.com/macros/s/AKfycbwX4uROVI9-Bqb3k-Z-e73TYxw0uz4PUf1ZYVNG/exec"></iframe>-->
-    <script>
+    <iframe class="iFrame_content" id="myFrame" src="https://script.google.com/macros/s/AKfycbxV-wrkWRRc6jgS_gMG2SmCvUvQrPEGtrPAz5rbsD0lGR9lmGFq7mK_dbGFVgZ8R5V4/exec" allow="camera *;microphone *"></iframe>
+    
         document.addEventListener("DOMContentLoaded", 		   function(event) { 
           var url = window.location.href;
           var arr = url.split('?ID=');
