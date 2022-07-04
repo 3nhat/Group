@@ -25,6 +25,8 @@ iframe {
     <div id="Geo" style="display: none;"></div>
     <iframe class="iFrame_content" id="myFrame" src="https://script.google.com/macros/s/AKfycbyU5sTwq9NyhycuxnJAc0EVoAcrrkGE1X5lkAfahV5h0Be7v_hz/exec" allow="camera *;microphone *;geolocation *"></iframe>
     <script>
+        function EID(n){return document.getElementById(n)}
+        
         document.addEventListener("DOMContentLoaded", 		   function(event) { 
           getLocation();
           /*
