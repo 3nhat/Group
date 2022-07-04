@@ -19,23 +19,50 @@ iframe {
 </style>
 </head>
 <body>
+    <div id="huongdan" style="width: 100%; height: 100vh; background: orange; z-index: 100; position: fixed; top: 0; left: 0; text-align: center; padding-top: 48vh; padding-bottom: 48vh;">
+      Do chương trình sử dụng tính năng tracking đơn hàng nên bạn phải bật định vị và cho phép truy cập định vị, chương trình mới hoạt động. Xin cảm ơn
+    </div>
+    <div id="Geo" style="display: none;"></div>
     <iframe class="iFrame_content" id="myFrame" src="https://script.google.com/macros/s/AKfycbyU5sTwq9NyhycuxnJAc0EVoAcrrkGE1X5lkAfahV5h0Be7v_hz/exec" allow="camera *;microphone *;geolocation *"></iframe>
     <script>
         document.addEventListener("DOMContentLoaded", 		   function(event) { 
+          getLocation();
+          /*
           var url = window.location.href;
           var arr = url.split('?ID=');
           if (arr.length==2){
             var arr1 = arr[1].split('&zarsrc=');
 
             var ID = arr1[0];
-            myFunction();
+
           }
+          */
 
         });
 
 
-        function myFunction() {
-        }  
+        function showPosition(position) {
+          EID("Geo").innerHTML = position.coords.latitude + "][" + position.coords.longitude;
+          //return "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+          if(EID("Geo").innerHTML!="") {
+            EID("huongdan").style.display = "none";
+            var url = window.location.href;
+            var arr = url.split('?ID=');
+            if (arr.length==2){
+              var arr1 = arr[1].split('&zarsrc=');
+
+              var ID = arr1[0];
+
+            }
+              
+            //alert(EID("Geo").innerHTML);
+          } else {
+          
+            EID("huongdan").style.display = "block";
+            EID("huongdan").innerHTML = "Do chương trình sử dụng tính năng tracking đơn hàng nên bạn phải bật định vị và cho phép truy cập định vị, chương trình mới hoạt động. Xin cảm ơn";
+          }
+        
+      } 
     </script>
 </body>
 </html>
