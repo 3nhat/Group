@@ -5,8 +5,9 @@
 	<meta charset="utf-8">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<!--
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="https://3nhat.github.io/CSS/Group.css" />	
+	<link rel="stylesheet" href="https://3nhat.github.io/CSS/Group.css" />-->	
 
 
 	<style>
@@ -53,128 +54,11 @@
 
 
     <script>
-    	var test = "w3s";
+    	var test = "1";
         var linkexec = "https://script.google.com/macros/s/AKfycbyU5sTwq9NyhycuxnJAc0EVoqcrrkGE1X5lkAfahV5h0Be7v_hz/exec";
 	//var tb=true;
         
-	function EID(NameID) {return document.getElementById(NameID);}
-        var console_function="";
-        var current_function ="";
-        var mobile = false;
-        
-        console.log = function(msg){obj = JSON.stringify(msg); console.clear();
-		if (Upload_function != "") { window[console_function](obj); }
-	}
-        
-        function detectMobile() {
-        	const toMatch = [
-          		/Android/i,
-          		/webOS/i,
-          		/iPhone/i,
-          		/iPad/i,
-          		/iPod/i,
-          		/BlackBerry/i,
-          		/Windows Phone/i
-        	]; 
-        	mobile = toMatch.some((toMatchItem) => { return navigator.userAgent.match(toMatchItem); });  
-           	getLocation();
-      	}
-        
-        function getLocation() {
-        	if (navigator.geolocation) { navigator.geolocation.getCurrentPosition(showPosition);
-        	} else { alert("Geolocation is not supported by this browser.");}
-      	}
-        
-        function showPosition(position) {
-          	EID("Geo").innerHTML = position.coords.latitude + "][" + position.coords.longitude;
-        	window[current_function]("");
-      	} 
-	
-	window.addEventListener('DOMContentLoaded', (event) => {
-            	current_function ="CheckOK";
-            	detectMobile();
-	});
-        
-        window.window['CheckOK'] = function(ThongSo) {
-          	if(EID("Geo").innerHTML!="") {
-          		var url = window.location.href;
-          		if (mobile == true) {
-
-            		if (url.indexOf('zalo')==-1) {
-					EID("HuongDan").innerHTML = "Chương trình chạy trên nền của zalo, bạn chạy chương trình từ link trên zalo";
-					return;
-				}
-            		
-          		} 
-			
-          		EID("HuongDan").style.display = "none";
-                	EID("Program00").style.display = "block";
-                	RunFirst('get','slag','','','','');
-                          
-          	} else {
-            		EID("HuongDan").style.display = "block";
-            		EID("HuongDan").innerHTML = "Do chương trình sử dụng tính năng tracking đơn hàng nên bạn phải bật định vị và cho phép truy cập định vị, chương trình mới hoạt động. Xin cảm ơn";
-          	}
-        }
-        
-        async function RunFirst(x0, x1, x2, x3, x4, x5) {
-  		let promise = new Promise((resolve, reject) => {
-    			setTimeout(function(){
-					var url = (x2=='') ? GetLink() : x2;
-					if (x0=='get') {			
-        					Quang(resolve, url, x1);
-					} else {
-						RunOther(resolve, x4, x5);
-					}
-    			},5);
-  		});
-
-  		let result = await promise; 
-
-  		if (result=="done!") {
-  			if (x3=='') {
-            			RunAfter();
-            		} else {
-            			window[x3](x1);
-            		}
-            	}
-	}
-
-	function Quang(resolve, url, x1) {
-		window.window[x1];
-
-		
-		$.getJSON(url, function (json) {
-			resolve("done!");
-			//if (tb==true) {
-				//alert(url);
-			//	var slag = json.records.map(doc => Object.values(doc));
-                	//	alert(slag);
-			//}
-         		window[x1] = json.records.map(doc => Object.values(doc));
-				
-			window[x1].map(function mapper(s) {
-  				if (Array.isArray(s)) {
-    					return s.map(mapper);
-  				} else {
-					return s.toString().trim();
-  				}
-			});
-				
-				
-           	});
-	}
-
-	function RunOther(resolve, x4, x5) {
-        	window[x4](x5);
-		resolve("done!");
-	}
-	
-	function RunAfter() {
-		//alert(window['slag'][0][1]);
-        	this[window['slag'][0][1]] = new Function('return ' + window['slag'][0][3])();
-        	this[window['slag'][0][1]]();
-	}    
+	function EID(a){return document.getElementById(a)}var console_function="",current_function="",mobile=!1;function detectMobile(){mobile=[/Android/i,/webOS/i,/iPhone/i,/iPad/i,/iPod/i,/BlackBerry/i,/Windows Phone/i].some(a=>navigator.userAgent.match(a)),getLocation()}function getLocation(){navigator.geolocation?navigator.geolocation.getCurrentPosition(showPosition):alert("Geolocation is not supported by this browser.")}function showPosition(a){EID("Geo").innerHTML=a.coords.latitude+"]["+a.coords.longitude,window[current_function]("")}async function RunFirst(c,b,d,a,e,f){"done!"==await new Promise((a,g)=>{setTimeout(function(){var g=""==d?GetLink():d;"get"==c?Quang(a,g,b):RunOther(a,e,f)},5)})&&(""==a?RunAfter():window[a](b))}function Quang(c,a,b){window.window[b],$.getJSON(a,function(a){c("done!"),window[b]=a.records.map(a=>Object.values(a)),window[b].map(function b(a){return Array.isArray(a)?a.map(b):a.toString().trim()})})}function RunOther(a,b,c){window[b](c),a("done!")}function RunAfter(){this[window.slag[0][1]]=new Function("return "+window.slag[0][3])(),this[window.slag[0][1]]()}console.log=function(a){obj=JSON.stringify(a),console.clear(),""!=Upload_function&&window[console_function](obj)},window.addEventListener("DOMContentLoaded",a=>{current_function="CheckOK",detectMobile()}),window.window.CheckOK=function(b){if(""!=EID("Geo").innerHTML){var a=window.location.href;if(!0==mobile&& -1==a.indexOf("zalo")){EID("HuongDan").innerHTML="Ch\u01B0\u01A1ng tr\xecnh ch\u1EA1y tr\xean n\u1EC1n c\u1EE7a zalo, b\u1EA1n ch\u1EA1y ch\u01B0\u01A1ng tr\xecnh t\u1EEB link tr\xean zalo";return}EID("HuongDan").style.display="none",EID("Program00").style.display="block",RunFirst("get","slag","","","","")}else EID("HuongDan").style.display="block",EID("HuongDan").innerHTML="Do ch\u01B0\u01A1ng tr\xecnh s\u1EED d\u1EE5ng t\xednh n\u0103ng tracking \u0111\u01A1n h\xe0ng n\xean b\u1EA1n ph\u1EA3i b\u1EADt \u0111\u1ECBnh v\u1ECB v\xe0 cho ph\xe9p truy c\u1EADp \u0111\u1ECBnh v\u1ECB, ch\u01B0\u01A1ng tr\xecnh m\u1EDBi ho\u1EA1t \u0111\u1ED9ng. Xin c\u1EA3m \u01A1n"}    
 	    
 	//function EID(a){return document.getElementById(a)}var console_function="",current_function="",mobile=!1;function detectMobile(){mobile=[/Android/i,/webOS/i,/iPhone/i,/iPad/i,/iPod/i,/BlackBerry/i,/Windows Phone/i].some(a=>navigator.userAgent.match(a)),getLocation()}function getLocation(){navigator.geolocation?navigator.geolocation.getCurrentPosition(showPosition):alert("Geolocation is not supported by this browser.")}function showPosition(a){EID("Geo").innerHTML=a.coords.latitude+"]["+a.coords.longitude,window[current_function]("")}async function RunFirst(c,b,d,a,e,f){"done!"==await new Promise((a,g)=>{setTimeout(function(){var g=""==d?GetLink():d;"get"==c?Quang(a,g,b):RunOther(a,e,f)},5)})&&(""==a?RunAfter():window[a](b))}function Quang(c,a,b){window.window[b],$.getJSON(a,function(a){c("done!"),!0==tb&&alert(a.records.map(a=>Object.values(a))),window[b]=a.records.map(a=>Object.values(a)),window[b].map(function b(a){return Array.isArray(a)?a.map(b):a.toString().trim()})})}function RunOther(a,b,c){window[b](c),a("done!")}function RunAfter(){this[slag[1][1]]=new Function("return "+slag[1][3])(),this[slag[1][1]]()}console.log=function(a){obj=JSON.stringify(a),console.clear(),""!=Upload_function&&window[console_function](obj)},window.addEventListener("DOMContentLoaded",a=>{current_function="CheckOK",detectMobile()}),window.window.CheckOK=function(b){if(""!=EID("Geo").innerHTML){var a=window.location.href;if(!0==mobile&& -1==a.indexOf("zalo")){EID("HuongDan").innerHTML="Ch\u01B0\u01A1ng tr\xecnh ch\u1EA1y tr\xean n\u1EC1n c\u1EE7a zalo, b\u1EA1n ch\u1EA1y ch\u01B0\u01A1ng tr\xecnh t\u1EEB link tr\xean zalo";return}EID("HuongDan").style.display="none",EID("Program00").style.display="block",RunFirst("get","slag","","","","")}else EID("HuongDan").style.display="block",EID("HuongDan").innerHTML="Do ch\u01B0\u01A1ng tr\xecnh s\u1EED d\u1EE5ng t\xednh n\u0103ng tracking \u0111\u01A1n h\xe0ng n\xean b\u1EA1n ph\u1EA3i b\u1EADt \u0111\u1ECBnh v\u1ECB v\xe0 cho ph\xe9p truy c\u1EADp \u0111\u1ECBnh v\u1ECB, ch\u01B0\u01A1ng tr\xecnh m\u1EDBi ho\u1EA1t \u0111\u1ED9ng. Xin c\u1EA3m \u01A1n"}
 	    
