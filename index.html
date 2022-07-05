@@ -321,23 +321,25 @@
                 var link = (str1.indexOf('https://3nhat.github.io/')>=0) ? script_url : "";
             }
             
+            
  			var strArr = str1.split('zarsrc=');
             str1 = strArr[0];
 
             strArr = str1.split('ID=');
             
+
             str1 = strArr[0];
             var str2="";
             if (strArr.length>1) {
-              str2 = "ID=" + strArr[1];
+              str2 = "ID=" + strArr[1] + "}QQQ{";
             } 
             
             strArr = str1.split('P=');
             
+            
             var str3 = (strArr.length>1) ? strArr[1] : "Group";
             
-            
-            link = (timthay>0) ? script_url + "?P=" + str3 + "?para1=F001" + "&para2=" + str3 +"}QQQ{ID}QQQ{" : script_url + "?P=" + str3 + "?para1=F001" + "&para2=" + str3 +"}QQQ{100nBtoDN7MupVz8lYQZzZw5zdG_9TgbFKJmuG007OTI}QQQ{" + str3 + "}QQQ{select A, B, C, D";
+			link = script_url + "?P=" + str3 + "&para1=F001" + "&para2=" + str3 + "}QQQ{100nBtoDN7MupVz8lYQZzZw5zdG_9TgbFKJmuG007OTI}QQQ{" + str3 + "}QQQ{select A, B, C, D" + str2;
             
 			alert(link);
 			return link;
