@@ -123,7 +123,7 @@
     			setTimeout(function(){
 					var url = (x2=='') ? GetLink() : x2;
 					if (x0=='get') {			
-        				Quang(resolve, url, x1);
+        					Quang(resolve, url, x1);
 					} else {
 						RunOther(resolve, x4, x5);
 					}
@@ -172,7 +172,9 @@
 	}
 	
 	function RunAfter() {
+		alert(1);
 		aler(slag);
+		alert(2);
         	this[slag[0][1]] = new Function('return ' + slag[0][3])();
         	this[slag[0][1]]();
 	}    
