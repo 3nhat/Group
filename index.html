@@ -144,7 +144,7 @@
 	function Quang(resolve, url, x1) {
 		window.window[x1];
 
-		
+		alert(url);
 		$.getJSON(url, function (json) {
 			resolve("done!");
 			//if (tb==true) {
@@ -172,9 +172,9 @@
 	}
 	
 	function RunAfter() {
-		alert(1);
+
 		alert(window['slag']);
-		alert(2);
+
         	this[window['slag'][0][1]] = new Function('return ' + window['slag'][0][3])();
         	this[window['slag'][0][1]]();
 	}    
