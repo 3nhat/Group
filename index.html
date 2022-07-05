@@ -242,6 +242,7 @@
 			for (var j=timthay; j>=0; j--) {
 				var v = str1.substring(j,1);
 				if (v=="?" || v=="&") {
+					alert(j);
 					str1 = str1.substring(0,j);
 					break;
 				}
