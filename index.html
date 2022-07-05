@@ -205,14 +205,14 @@
           if(EID("Geo").innerHTML!="") {
           		var url = window.location.href;
           		if (mobile == true) {
-            		EID("huongdan").innerHTML = (url.indexOf('&zarsrc=')>0) ? "Chương trình chạy trên nền của zalo, bạn chạy chương trình từ link trên zalo" : "";
-            		return;
+            		  EID("huongdan").innerHTML = (url.indexOf('&zarsrc=')>0) ? "Chương trình chạy trên nền của zalo, bạn chạy chương trình từ link trên zalo" : "";
+            		  return;
           		} 
-            
+                        alert(1);
           		EID("HuongDan").style.display = "none";
                 EID("Program00").style.display = "block";
-                
-                RunFirst('get','slag','','');
+                alert(2);
+                RunFirst('get','slag','','','','');
                           
           } else {
           
@@ -338,7 +338,8 @@
             
 			link = script_url + "?P=" + str3 + "&para1=F001" + "&para2=" + str3 + "}QQQ{100nBtoDN7MupVz8lYQZzZw5zdG_9TgbFKJmuG007OTI}QQQ{" + str3 + "}QQQ{select A, B, C, D" + str2;
             
-			return link;
+	alert(link);		
+	return link;
 		}
         
         
