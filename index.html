@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, height=device-height, maximum-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://3nhat.github.io/CSS/Group.css" />	
+
+
+	<style>
+		body, .Program{ overflow: hidden;	margin:0; }
+        body::-webkit-scrollbar, .Program::-webkit-scrollbar { display: none;}
+		body, .Program { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        #Program00 {width: 100%; height: 100vh}
+        
+        .HuongDan {
+          z-index: 100;
+          width: 100%; height: 100vh; 
+          background: orange; 
+          position: fixed; 
+          top: 0; left: 0; 
+          padding-top: 48vh; padding-bottom: 48vh;
+          text-align: center; 
+        }
+        
+        #container_loader, #container_alert {
+            position: absolute;
+            top:0;
+            display: none;
+	    	width: 100vw;
+         }
+
+         .main_loader, .main_alert {
+            width: 100vw;
+            height: 100vh;
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+         }
+
+         .loader{
+            width: auto;
+            height: auto;
+            display: inline-block;
+            padding: 10px;
+			margin-left: auto; margin-right: auto;
+    
+            border: 8px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 8px solid green;
+            border-bottom: 8px solid green;
+            width: 60px;
+            height: 60px;
+            -webkit-animation: spin1 2s linear infinite;
+            animation: spin1 2s linear infinite;
+         }
+         
+         #container_loader, {
+           z-index: 99;
+         }
+         
+         #container_alert, {
+           z-index: 98;
+         }
+         
+		 .main_loader {
+            vertical-align: middle;
+         }
+
+         .main_alert {
+            vertical-align: top; 
+         }
+
+         .alert{
+            width: auto;
+            height: auto;
+            display: inline-block;
+            padding: 10px;
+		    margin-left: auto; margin-right: auto;
+            margin-top: 30px;
+   			
+            -webkit-animation: spin1 2s linear infinite;
+            animation: spin1 2s linear infinite;
+            width: var(--width-alert);
+         }
+         
+         @-webkit-keyframes spin1 {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+         }
+
+         @keyframes spin1 {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+         }
+         
+		.button9 {
+  			cursor: pointer;
+  			width: 100%;
+  			margin: 8px 2px;
+  			font-size: calc(1.5*var(--font-size));
+  			padding: 8px;
+  			border-radius: 2mm; 
+  			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		}
+        
+        .khung9 {
+           height: var(--height-alert);
+           overflow-x: hidden;
+           height: 20vh;
+           padding: 2px 5px 2px 5px;
+           margin: 5px auto 5px auto;
+           background: white;
+           text-align: center;
+         }
+         
+         .khung {
+  			margin-bottom: var(--margin-bottom-khung);
+  			padding: var(--padding-top-khung) 5px 5px 5px;
+  			border-radius: 2mm;
+  			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+		}
+         
+         .Nhom9 {
+  			width: 100%;
+  			display: flex;
+  			flex-wrap: wrap;
+		 }
+
+	</style>
+</head>
+
+<body>
+	<div id="Audio" style="display:none">
+		<audio id="myAudio1"><source src="https://3nhat.github.io/Audio/click.mp3" type="audio/mpeg"></audio>
+		<audio id="myAudio2"><source src="https://3nhat.github.io/Audio/sai.mp3" type="audio/mpeg"></audio>
+		<audio id="myAudio1"><source src="https://3nhat.github.io/Audio/trung.mp3" type="audio/mpeg"></audio>
+	</div>
+    <div id="HuongDan" class="HuongDan">
+      Do chương trình sử dụng tính năng tracking đơn hàng nên bạn phải bật định vị và cho phép truy cập định vị, chương trình mới hoạt động. Xin cảm ơn
+    </div>
+    <div id="Geo" style="display: none;"></div>
+    <div id="container_loader">
+	  <div class="main_loader" >
+        <div class="loader" onclick="EID('container_loader').style.display = 'none'"></div>
+	  </div>
+    </div>
+    
+    <div id="container_alert"></div>
+    
+    <div id="Program00" class="Program" style="display: none;"></div>
+
+
+
+	<script>
+        
+        
+    	var test = "w3s";
+        var linkexec = "https://script.google.com/macros/s/AKfycbyU5sTwq9NyhycuxnJAc0EVoqcrrkGE1X5lkAfahV5h0Be7v_hz/exec";
+        
+        
+        function EID(NameID) {return document.getElementById(NameID);}
+        var console_function="";
+        var current_function ="";
+        var mobile = false;
+        
+        
+        
+        
+		console.log = function(msg){obj = JSON.stringify(msg); console.clear();
+			if (Upload_function != "") { window[console_function](obj); }
+		}
+        
+        function detectMobile() {
+        	const toMatch = [
+          		/Android/i,
+          		/webOS/i,
+          		/iPhone/i,
+          		/iPad/i,
+          		/iPod/i,
+          		/BlackBerry/i,
+          		/Windows Phone/i
+        	]; 
+        	mobile = toMatch.some((toMatchItem) => { return navigator.userAgent.match(toMatchItem); });  
+            getLocation();
+      	}
+        
+        function getLocation() {
+        	if (navigator.geolocation) { navigator.geolocation.getCurrentPosition(showPosition);
+        	} else { alert("Geolocation is not supported by this browser.");}
+      	}
+        
+        function showPosition(position) {
+          	EID("Geo").innerHTML = position.coords.latitude + "][" + position.coords.longitude;
+          	
+        	window[current_function]("");
+      	} 
+	
+		window.addEventListener('DOMContentLoaded', (event) => {
+            current_function ="CheckOK";
+            detectMobile();
+		});
+        
+        window.window['CheckOK'] = function(ThongSo) {
+          if(EID("Geo").innerHTML!="") {
+          		var url = window.location.href;
+          		if (mobile == true) {
+            		EID("huongdan").innerHTML = (url.indexOf('&zarsrc=')>0) ? "Chương trình chạy trên nền của zalo, bạn chạy chương trình từ link trên zalo" : "";
+            		return;
+          		} 
+            
+          		EID("HuongDan").style.display = "none";
+                EID("Program00").style.display = "block";
+                
+                RunFirst('get','slag','','');
+                          
+          } else {
+          
+            EID("HuongDan").style.display = "block";
+            EID("HuongDan").innerHTML = "Do chương trình sử dụng tính năng tracking đơn hàng nên bạn phải bật định vị và cho phép truy cập định vị, chương trình mới hoạt động. Xin cảm ơn";
+          }
+        }
+        
+        async function RunFirst(x0, x1, x2, x3, x4, x5) {
+  			let promise = new Promise((resolve, reject) => {
+    			setTimeout(function(){
+					var url = (x2=='') ? GetLink() : x2;
+					if (x0=='get') {			
+        				Quang(resolve, url, x1);
+					} else {
+						RunOther(resolve, x4, x5);
+					}
+    			},5);
+  			});
+
+  			let result = await promise; 
+
+  			if (result=="done!") {
+  				if (x3=='') {
+            		RunAfter();
+            	} else {
+            		window[x3](x1);
+            	}
+            }
+		}
+
+		function Quang(resolve, url, x1) {
+			window.window[x1];
+
+			alert(url);
+			$.getJSON(url, function (json) {
+                
+				resolve("done!");
+				var slag = json.records.map(doc => Object.values(doc));
+                alert(slag);
+         		window[x1] = json.records.map(doc => Object.values(doc));
+				
+				window[x1].map(function mapper(s) {
+  					if (Array.isArray(s)) {
+    						return s.map(mapper);
+  					} else {
+						return s.toString().trim();
+  					}
+				});
+				
+				
+           });
+		}
+
+		function RunOther(resolve, x4, x5) {
+        	window[x4](x5);
+			resolve("done!");
+		}
+	
+		function RunAfter() {
+            
+        	this[slag[1][1]] = new Function('return ' + slag[1][3])();
+        	this[slag[1][1]]();
+		}
+
+
+        
+        function GetLink() {
+          var arr1 = [
+['https://', 'script.go', 'ogle.c', 'om/macr', 'os/s/AKfyc', 'bw8Ucnp', '_fb0G', 'Dkg4oYffP9', 'GJDwSeG', 'EwsSqJT12U', 'uvVsh8CQ', '1dU/exe', 'c'],
+['https://s', 'cript.goo', 'gle.com/', 'macro', 's/s/AKfy', 'cbygb-BCk', 'kPHGgPKW', 'E5UjBLI', '6qL-d', 'C3ilyj', '5N2Zi/ex', 'ec'],
+['https://sc', 'ript.goog', 'le.com/m', 'acros/s/AK', 'fycbz_x3p', 'T9792hA6', '_cNtYJg', 'oGP2Ez0v', 'XF3NL', 't4EJu-A', '/exec'],
+['https:', '//scri', 'pt.goog', 'le.co', 'm/macros/s', '/AKfycb', 'y3wKkQa0', 'Y7b9n16d', 'S9mj7v', 'GExEqTz7D', 'loNyMR', 's/exec'],
+['https', '://scr', 'ipt.g', 'oogle.co', 'm/macro', 's/s/A', 'KfycbxTT', 'aLGsqUKI8', '4KMZk7TQR', 'bHAgG', 'Wmupm', 'DNYN1FlIQ', '/exec'],
+['https:/', '/script.g', 'oogle.co', 'm/macros/', 's/AKfyc', 'byFN0Dg', '2yNi3g', 'U32aNHn', 'R9j6SL', 'x7YsZsTC', 'P-TQ1Xg/ex', 'ec'],
+['https:', '//scr', 'ipt.go', 'ogle.com/m', 'acros/s/', 'AKfycbw', 'QivcbzAr-', 'nDL4D', 'm5n8Yg', '0y_zHG', 'IIeNag', 'rCfk7', 'ow/exec'],
+['https:', '//scri', 'pt.goo', 'gle.com/ma', 'cros/s/', 'AKfycb', 'zG6k3db8wz', 'uDr8os', 'P3g1EW', 'YWZD1vr_B', 'FWDF0z', 'h/exec'],
+['https', '://sc', 'ript.go', 'ogle.co', 'm/mac', 'ros/s/', 'AKfycbyZ0', 'nEjfM', 'eLCvWWyBzJ', 'XpBIw', 'L-Ey3F', 'z5TtFB054/', 'exec'],
+['https://sc', 'ript.goo', 'gle.c', 'om/mac', 'ros/s/A', 'Kfycb', 'zq5Dyl9', '_UgTh6r', '90oI4', 'PYzRzWw', 'bASbs', 'Z4JpjQ', 'ZFA/exec'],
+['https:', '//script.g', 'oogle.c', 'om/macros/', 's/AKfycby', 'aSxLfzClh5', 'lzzSNV6_h8', 'FeRZOpck', 'U6KtgYs2C', '9w/exe', 'c'],
+['https://', 'script.goo', 'gle.c', 'om/macros', '/s/AKfyc', 'bzKUnLZ', 'PfDVs', 'cy5oLBRi_V', 'ViK7Rc4VI', 'T9QszoB', '6/exec'],
+['https://s', 'cript', '.goog', 'le.com', '/macr', 'os/s/AKf', 'ycbywW', 'rgxjUz', 'I2R37OA', 'WhVuw4', 'TqIPS6p9', 'U6BUk8Jr', '7g/exec']
+
+                       ];
+			
+            var rand = Math.floor(Math.random() * (arr1.length-1));
+			rand = (test=="0") ? 0 : rand;
+            
+			var script_url="";
+
+			for (var i=0;i<arr1[rand].length;i++) {
+				script_url = script_url + arr1[rand][i];
+			}
+
+           
+            linkexec = "https://script.google.com/macros/s/AKfycbyU5sTwq9NyhycuxnJAc0EVoqcrrkGE1X5lkAfahV5h0Be7v_hz/exec";
+
+			var str1 = window.location.href;	
+			
+            if (test=="w3s") {
+				var link = script_url;
+            } else {
+                var link = (str1.indexOf('https://3nhat.github.io/')>=0) ? script_url : "";
+            }
+            
+ 			var timthay = str1.indexOf('zarsrc=');
+            str1 = (timthay>0) ? str1.substring(0,timthay) : str1;
+            timthay = str1.indexOf('ID=');
+            var str2="";
+            if (timthay>0) {
+    		  str1 = str1.substring(0,timthay);
+              str2 = "ID=" + str1.substring(timthay+3,str1.length);
+            } 
+            
+            timthay1 = str1.indexOf("P=");
+            str1 = str1.substring(0,timthay);
+            var str3 = str1.substring(timthay+2,str1.length)
+            str3 = (str3=="") ? "Group" : str3;
+            
+            link = (timthay>0) ? str1 + + "?para1=F001" + "&para2=" + str3 +"}QQQ{ID}QQQ{" : script_url + "?para1=F001" + "&para2=" + str3 +"}QQQ{100nBtoDN7MupVz8lYQZzZw5zdG_9TgbFKJmuG007OTI}QQQ{" + str3 + "}QQQ{select A, B, C, D";
+            
+			
+			return link;
+		}
+        
+        
+	
+
+	</script>
+
+</body>
+</html>
