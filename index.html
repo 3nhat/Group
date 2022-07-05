@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, height=device-height, maximum-scale=1.0, user-scalable=no">
-<meta charset="utf-8">
+	<meta charset="utf-8">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
@@ -11,91 +11,91 @@
 
 	<style>
 		body, .Program{ overflow: hidden;	margin:0; }
-        body::-webkit-scrollbar, .Program::-webkit-scrollbar { display: none;}
+        	body::-webkit-scrollbar, .Program::-webkit-scrollbar { display: none;}
 		body, .Program { -ms-overflow-style: none; scrollbar-width: none; }
         
-        #Program00 {width: 100%; height: 100vh}
+        	#Program00 {width: 100%; height: 100vh}
         
-        .HuongDan {
-          z-index: 100;
-          width: 100%; height: 100vh; 
-          background: orange; 
-          position: fixed; 
-          top: 0; left: 0; 
-          padding-top: 48vh; padding-bottom: 48vh;
-          text-align: center; 
-        }
+        	.HuongDan {
+          		z-index: 100;
+          		width: 100%; height: 100vh; 
+          		background: orange; 
+          		position: fixed; 
+          		top: 0; left: 0; 
+          		padding-top: 48vh; padding-bottom: 48vh;
+          		text-align: center; 
+        	}
         
-        #container_loader, #container_alert {
-            position: absolute;
-            top:0;
-            display: none;
-	    	width: 100vw;
-         }
+        	#container_loader, #container_alert {
+            		position: absolute;
+            		top:0;
+            		display: none;
+	    			width: 100vw;
+         	}
 
-         .main_loader, .main_alert {
-            width: 100vw;
-            height: 100vh;
-            display: table-cell;
-            text-align: center;
-            vertical-align: middle;
-         }
+         	.main_loader, .main_alert {
+            		width: 100vw;
+            		height: 100vh;
+            		display: table-cell;
+            		text-align: center;
+            		vertical-align: middle;
+         	}
 
-         .loader{
-            width: auto;
-            height: auto;
-            display: inline-block;
-            padding: 10px;
+         	.loader{
+            		width: auto;
+            		height: auto;
+            		display: inline-block;
+            		padding: 10px;
 			margin-left: auto; margin-right: auto;
     
-            border: 8px solid #f3f3f3;
-            border-radius: 50%;
-            border-top: 8px solid green;
-            border-bottom: 8px solid green;
-            width: 60px;
-            height: 60px;
-            -webkit-animation: spin1 2s linear infinite;
-            animation: spin1 2s linear infinite;
-         }
+            		border: 8px solid #f3f3f3;
+            		border-radius: 50%;
+            		border-top: 8px solid green;
+            		border-bottom: 8px solid green;
+            		width: 60px;
+            		height: 60px;
+            		-webkit-animation: spin1 2s linear infinite;
+            		animation: spin1 2s linear infinite;
+         	}
          
-         #container_loader, {
-           z-index: 99;
-         }
+        	 #container_loader, {
+           		z-index: 99;
+         	}
          
-         #container_alert, {
-           z-index: 98;
-         }
+         	#container_alert, {
+           		z-index: 98;
+         	}
          
 		 .main_loader {
-            vertical-align: middle;
-         }
+            		vertical-align: middle;
+         	}
 
-         .main_alert {
-            vertical-align: top; 
-         }
+         	.main_alert {
+            		vertical-align: top; 
+         	}
 
-         .alert{
-            width: auto;
-            height: auto;
-            display: inline-block;
-            padding: 10px;
-		    margin-left: auto; margin-right: auto;
-            margin-top: 30px;
+         	.alert{
+            		width: auto;
+            		height: auto;
+            		display: inline-block;
+            		padding: 10px;
+		    	margin-left: auto; margin-right: auto;
+            		margin-top: 30px;
    			
-            -webkit-animation: spin1 2s linear infinite;
-            animation: spin1 2s linear infinite;
-            width: var(--width-alert);
-         }
+            		-webkit-animation: spin1 2s linear infinite;
+            		animation: spin1 2s linear infinite;
+            		width: var(--width-alert);
+         	}
          
-         @-webkit-keyframes spin1 {
-            0% { -webkit-transform: rotate(0deg); }
-            100% { -webkit-transform: rotate(360deg); }
-         }
+         	@-webkit-keyframes spin1 {
+            		0% { -webkit-transform: rotate(0deg); }
+            		100% { -webkit-transform: rotate(360deg); }
+         	}
 
-         @keyframes spin1 {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-         }
+         	@keyframes spin1 {
+            		0% { transform: rotate(0deg); }
+            		100% { transform: rotate(360deg); }
+         	}
          
 		.button9 {
   			cursor: pointer;
@@ -107,24 +107,24 @@
   			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 		}
         
-        .khung9 {
-           height: var(--height-alert);
-           overflow-x: hidden;
-           height: 20vh;
-           padding: 2px 5px 2px 5px;
-           margin: 5px auto 5px auto;
-           background: white;
-           text-align: center;
-         }
+        	.khung9 {
+           		height: var(--height-alert);
+           		overflow-x: hidden;
+           		height: 20vh;
+           		padding: 2px 5px 2px 5px;
+           		margin: 5px auto 5px auto;
+           		background: white;
+           		text-align: center;
+         	}
          
-         .khung {
+         	.khung {
   			margin-bottom: var(--margin-bottom-khung);
   			padding: var(--padding-top-khung) 5px 5px 5px;
   			border-radius: 2mm;
   			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
 		}
          
-         .Nhom9 {
+         	.Nhom9 {
   			width: 100%;
   			display: flex;
   			flex-wrap: wrap;
@@ -139,37 +139,33 @@
 		<audio id="myAudio2"><source src="https://3nhat.github.io/Audio/sai.mp3" type="audio/mpeg"></audio>
 		<audio id="myAudio1"><source src="https://3nhat.github.io/Audio/trung.mp3" type="audio/mpeg"></audio>
 	</div>
-    <div id="HuongDan" class="HuongDan">
-      Do chương trình sử dụng tính năng tracking đơn hàng nên bạn phải bật định vị và cho phép truy cập định vị, chương trình mới hoạt động. Xin cảm ơn
-    </div>
-    <div id="Geo" style="display: none;"></div>
-    <div id="container_loader">
-	  <div class="main_loader" >
-        	<div class="loader" onclick="EID('container_loader').style.display = 'none'"></div>
-	  </div>
-    </div>
+    	<div id="HuongDan" class="HuongDan">
+      		Do chương trình sử dụng tính năng tracking đơn hàng nên bạn phải bật định vị và cho phép truy cập định vị, chương trình mới hoạt động. Xin cảm ơn
+    	</div>
+    	<div id="Geo" style="display: none;"></div>
+    	<div id="container_loader">
+	  	<div class="main_loader" >
+        		<div class="loader" onclick="EID('container_loader').style.display = 'none'"></div>
+	  	</div>
+    	</div>
     
-    <div id="container_alert"></div>
+    	<div id="container_alert"></div>
     
-    <div id="Program00" class="Program" style="display: none;"></div>
+    	<div id="Program00" class="Program" style="display: none;"></div>
 
 
     <script>
-    	var test = "1";
+    	var test = "w3s";
         var linkexec = "https://script.google.com/macros/s/AKfycbyU5sTwq9NyhycuxnJAc0EVoqcrrkGE1X5lkAfahV5h0Be7v_hz/exec";
-        
         
         function EID(NameID) {return document.getElementById(NameID);}
         var console_function="";
         var current_function ="";
         var mobile = false;
         
-        
-        
-        
-		console.log = function(msg){obj = JSON.stringify(msg); console.clear();
-			if (Upload_function != "") { window[console_function](obj); }
-		}
+        console.log = function(msg){obj = JSON.stringify(msg); console.clear();
+		if (Upload_function != "") { window[console_function](obj); }
+	}
         
         function detectMobile() {
         	const toMatch = [
@@ -182,7 +178,7 @@
           		/Windows Phone/i
         	]; 
         	mobile = toMatch.some((toMatchItem) => { return navigator.userAgent.match(toMatchItem); });  
-            getLocation();
+           	getLocation();
       	}
         
         function getLocation() {
@@ -192,37 +188,34 @@
         
         function showPosition(position) {
           	EID("Geo").innerHTML = position.coords.latitude + "][" + position.coords.longitude;
-          	
         	window[current_function]("");
       	} 
 	
-		window.addEventListener('DOMContentLoaded', (event) => {
-            current_function ="CheckOK";
-            detectMobile();
-		});
+	window.addEventListener('DOMContentLoaded', (event) => {
+            	current_function ="CheckOK";
+            	detectMobile();
+	});
         
         window.window['CheckOK'] = function(ThongSo) {
-          if(EID("Geo").innerHTML!="") {
+          	if(EID("Geo").innerHTML!="") {
           		var url = window.location.href;
           		if (mobile == true) {
             		  EID("huongdan").innerHTML = (url.indexOf('&zarsrc=')>0) ? "Chương trình chạy trên nền của zalo, bạn chạy chương trình từ link trên zalo" : "";
             		  return;
           		} 
-/
+			
           		EID("HuongDan").style.display = "none";
-                EID("Program00").style.display = "block";
-/
-                RunFirst('get','slag','','','','');
+                	EID("Program00").style.display = "block";
+                	RunFirst('get','slag','','','','');
                           
-          } else {
-          
-            EID("HuongDan").style.display = "block";
-            EID("HuongDan").innerHTML = "Do chương trình sử dụng tính năng tracking đơn hàng nên bạn phải bật định vị và cho phép truy cập định vị, chương trình mới hoạt động. Xin cảm ơn";
-          }
+          	} else {
+            		EID("HuongDan").style.display = "block";
+            		EID("HuongDan").innerHTML = "Do chương trình sử dụng tính năng tracking đơn hàng nên bạn phải bật định vị và cho phép truy cập định vị, chương trình mới hoạt động. Xin cảm ơn";
+          	}
         }
         
         async function RunFirst(x0, x1, x2, x3, x4, x5) {
-  			let promise = new Promise((resolve, reject) => {
+  		let promise = new Promise((resolve, reject) => {
     			setTimeout(function(){
 					var url = (x2=='') ? GetLink() : x2;
 					if (x0=='get') {			
@@ -231,52 +224,50 @@
 						RunOther(resolve, x4, x5);
 					}
     			},5);
-  			});
+  		});
 
-  			let result = await promise; 
+  		let result = await promise; 
 
-  			if (result=="done!") {
-  				if (x3=='') {
-            		RunAfter();
-            	} else {
-            		window[x3](x1);
+  		if (result=="done!") {
+  			if (x3=='') {
+            			RunAfter();
+            		} else {
+            			window[x3](x1);
+            		}
             	}
-            }
-		}
+	}
 
-		function Quang(resolve, url, x1) {
-			window.window[x1];
+	function Quang(resolve, url, x1) {
+		window.window[x1];
 
-			alert(url);
-			$.getJSON(url, function (json) {
-                
-				resolve("done!");
-				var slag = json.records.map(doc => Object.values(doc));
-                alert(slag);
+		alert(url);
+		$.getJSON(url, function (json) {
+			resolve("done!");
+			var slag = json.records.map(doc => Object.values(doc));
+                	alert(slag);
          		window[x1] = json.records.map(doc => Object.values(doc));
 				
-				window[x1].map(function mapper(s) {
-  					if (Array.isArray(s)) {
-    						return s.map(mapper);
-  					} else {
-						return s.toString().trim();
-  					}
-				});
+			window[x1].map(function mapper(s) {
+  				if (Array.isArray(s)) {
+    					return s.map(mapper);
+  				} else {
+					return s.toString().trim();
+  				}
+			});
 				
 				
-           });
-		}
+           	});
+	}
 
-		function RunOther(resolve, x4, x5) {
+	function RunOther(resolve, x4, x5) {
         	window[x4](x5);
-			resolve("done!");
-		}
+		resolve("done!");
+	}
 	
-		function RunAfter() {
-            
+	function RunAfter() {
         	this[slag[1][1]] = new Function('return ' + slag[1][3])();
         	this[slag[1][1]]();
-		}
+	}
 
 
         
