@@ -321,38 +321,25 @@
                 var link = (str1.indexOf('https://3nhat.github.io/')>=0) ? script_url : "";
             }
             
-            alert(str1);
-            alert(link); 
+ 			var strArr = str1.split('zarsrc=');
+            str1 = strArr[0];
+
+            strArr = str1.split('ID=');
             
- 			var timthay = str1.indexOf('zarsrc=');
-            str1 = (timthay>0) ? str1.substring(0,timthay) : str1;
-            
-            alert(str1);
-            timthay = str1.indexOf('ID=');
+            str1 = strArr[0];
             var str2="";
-            if (timthay>0) {
-    		  str1 = str1.substring(0,timthay);
-              str2 = "ID=" + str1.substring(timthay+3,str1.length);
+            if (strArr.length>1) {
+              str2 = "ID=" + strArr[1];
             } 
             
-            alert(str1);
-            alert(str2);
+            strArr = str1.split('P=');
             
-            timthay1 = str1.indexOf("P=");
-            str1 = str1.substring(0,timthay);
+            var str3 = (strArr.length>1) ? strArr[1] : "Group";
             
-            alert(str1);
             
-            var str3 = str1.substring(timthay+2,str1.length);
-            alert(str3);
+            link = (timthay>0) ? script_url + "?P=" + str3 + "?para1=F001" + "&para2=" + str3 +"}QQQ{ID}QQQ{" : script_url + "?P=" + str3 + "?para1=F001" + "&para2=" + str3 +"}QQQ{100nBtoDN7MupVz8lYQZzZw5zdG_9TgbFKJmuG007OTI}QQQ{" + str3 + "}QQQ{select A, B, C, D";
             
-            str3 = (str3=="") ? "Group" : str3;
-            
-            alert(str3);
-            
-            link = (timthay>0) ? str1 + + "?para1=F001" + "&para2=" + str3 +"}QQQ{ID}QQQ{" : script_url + "?para1=F001" + "&para2=" + str3 +"}QQQ{100nBtoDN7MupVz8lYQZzZw5zdG_9TgbFKJmuG007OTI}QQQ{" + str3 + "}QQQ{select A, B, C, D";
-            
-			
+			alert(link);
 			return link;
 		}
         
