@@ -2,8 +2,10 @@
 <head>
     <title>Html-Qrcode Demo</title>
 <body>
-    <div id="qr-reader" style="width:100%; "></div>
+<div>
+    <div id="qr-reader" style="width:100%; transform: scale(2)"></div>
     <div id="qr-reader-results"></div>
+</div>
 </body>
 <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
 <script>
@@ -53,7 +55,7 @@ function Quang(x){
         var html5QrcodeScanner = new Html5QrcodeScanner(
             x3, {
     fps: 10,
-    qrbox: w,
+    qrbox: 250,
     formatsToSupport: formatsToSupport
   });
         html5QrcodeScanner.render(onScanSuccess);
