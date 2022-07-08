@@ -1,9 +1,14 @@
 <html>
 <head>
     <title>Html-Qrcode Demo</title>
+    <style>
+      .button_scan {
+        font-size: 50px;
+      }
+    </style>
 <body>
-<button type="button" onclick="stopScan()">Stop Scanning</button>
-<button type="button" onclick="Quang(']QQQ[]QQQ[qr-reader')">Start Scanning</button>
+<button type="button" class="button_scan" onclick="stopScan()">Stop Scanning</button>
+<button type="button" class="button_scan" onclick="Quang(']QQQ[]QQQ[qr-reader')">Start Scanning</button>
 <div id="khung_qr-reader" style="overflow: hidden; width:100%;">
 	<div id="khung1_qr-reader"  style="width:100%;">
     	<div id="qr-reader" style="width:100%;"></div>
@@ -86,7 +91,9 @@ var h_max=161;
         	var w = EID("qr-reader").offsetWidth/1.52;
         
         	window.html5QrcodeScanner = new Html5QrcodeScanner(
-            	x3, {
+            	x3, 
+                { facingMode: "environment" },
+                {
     			fps: 10,
     			qrbox: {width: w, height: w},
     			formatsToSupport: formatsToSupport
