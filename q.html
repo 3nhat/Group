@@ -2,6 +2,8 @@
 <head>
     <title>Html-Qrcode Demo</title>
 <body>
+<button type="button" onclick="stopScan()">Stop Scanning</button>
+<button type="button" onclick="Quang(']QQQ[]QQQ[qr-reader')">Start Scanning</button>
 <div id="khung_qr-reader" style="overflow: hidden;">
 <div id="khung1_qr-reader">
     <div id="qr-reader" style="width:100%;"></div>
@@ -12,84 +14,89 @@
 <script>
 function EID(NameID) {return document.getElementById(NameID);}
 var h_max=161;
-Quang("]QQQ[]QQQ[qr-reader");
-function Quang(x){
-    var arr = x.split("]QQQ[");
-    var x1 =  arr[0];
-    var x2 = arr[1];
-    var x3 = arr[2];
+	//Quang("]QQQ[]QQQ[qr-reader");
+    
+    function stopScan() {
+  		//EID('khung_qr-reader').style.height =  h_max + 'px';
+        html5QrcodeScanner.clear();
+	}
 
-    function docReady(fn) {
-        // see if DOM is already available
-        if (document.readyState === "complete"
-            || document.readyState === "interactive") {
-            // call on next available tick
-            setTimeout(fn, 1);
-        } else {
-            document.addEventListener("DOMContentLoaded", fn);
-        }
-    }
-
-    docReady(function () {
-        var resultContainer = EID('qr-reader-results');
-        var lastResult, countResults = 0;
-        function onScanSuccess(decodedText, decodedResult) {
-            if (decodedText !== lastResult) {
-                ++countResults;
-                lastResult = decodedText;
-                // Handle on success condition with the decoded message.
-                //console.log(`Scan result ${decodedText}`, decodedResult);
-                if (x0!="") window[x0](x1);
-            }
-            
-            
-        }
-		
-        const formatsToSupport = [
-  Html5QrcodeSupportedFormats.QR_CODE,
-  Html5QrcodeSupportedFormats.UPC_A,
-  Html5QrcodeSupportedFormats.UPC_E,
-  Html5QrcodeSupportedFormats.UPC_EAN_EXTENSION
-];
-
-        var w = EID("qr-reader").offsetWidth/1.52;
-        
-        var html5QrcodeScanner = new Html5QrcodeScanner(
-            x3, {
-    fps: 10,
-    qrbox: w,
-    formatsToSupport: formatsToSupport
-  });
-        html5QrcodeScanner.render(onScanSuccess);
-    });
-}
-
-function outputsize() {
-var h = EID('qr-reader').offsetHeight;
-if (h_max<h) h_max=h;
+	function outputsize() {
+		var h = EID('qr-reader').offsetHeight;
+		if (h_max<h) h_max=h;
 
 //.style.transform
 
-  var ot = (h<180) ? 0 : h_max/4;
-  EID('khung_qr-reader').style.marginTop = (h<180) ? "-125px" : "0px";
+  		var ot = (h<180) ? 0 : h_max/4;
+  		EID('khung_qr-reader').style.marginTop = (h<180) ? "-125px" : "0px";
   
- EID('khung_qr-reader').style.height = (h<180) ? 3*h/2 + 'px': 0.4*h + 'px';
+ 		EID('khung_qr-reader').style.height = (h<180) ? 3*h/2 + 'px': 0.4*h + 'px';
  
- EID('khung1_qr-reader').style.transform = (h<180) ? "scale(1.8)" : "scale(1)";
- EID('khung1_qr-reader').style.height = (h<180) ? 5*h/4 + 'px' : h + "px";
+ 		EID('khung1_qr-reader').style.transform = (h<180) ? "scale(1.8)" : "scale(1)";
+ 		EID('khung1_qr-reader').style.height = (h<180) ? 5*h/4 + 'px' : h + "px";
   
-  //EID("qr-reader-results").style.marginTop = (h<180) ? 0 : -1*h_max/4 + 'px';
 
-  
-  EID('khung1_qr-reader').style.marginTop = -1*ot + 'px';
-  //EID('qr-reader').style.marginBottom = -ot + 'px';
- //width.value = textbox.offsetWidth
- //height.value = textbox.offsetHeight
- //alert(1);
-}
-//outputsize();
+  		EID('khung1_qr-reader').style.marginTop = -1*ot + 'px';
 
-new ResizeObserver(outputsize).observe(EID('qr-reader'));
+ 		//width.value = textbox.offsetWidth
+ 		//height.value = textbox.offsetHeight
+
+	}
+
+	new ResizeObserver(outputsize).observe(EID('qr-reader'));
+    
+	function Quang(x){
+    	var arr = x.split("]QQQ[");
+    	var x1 =  arr[0];
+    	var x2 = arr[1];
+    	var x3 = arr[2];
+
+    	function docReady(fn) {
+        // see if DOM is already available
+        	if (document.readyState === "complete"
+            	|| document.readyState === "interactive") {
+            // call on next available tick
+            	setTimeout(fn, 1);
+        	} else {
+            	document.addEventListener("DOMContentLoaded", fn);
+        	}
+    	}
+
+    	docReady(function () {
+        	var resultContainer = EID('qr-reader-results');
+        	var lastResult, countResults = 0;
+        	function onScanSuccess(decodedText, decodedResult) {
+            	if (decodedText !== lastResult) {
+                	++countResults;
+                	lastResult = decodedText;
+                // Handle on success condition with the decoded message.
+                //console.log(`Scan result ${decodedText}`, decodedResult);
+                	if (x0!="") window[x0](x1);
+            	}
+        	}
+		
+        	const formatsToSupport = [
+  				Html5QrcodeSupportedFormats.QR_CODE,
+  				Html5QrcodeSupportedFormats.UPC_A,
+  				Html5QrcodeSupportedFormats.UPC_E,
+  				Html5QrcodeSupportedFormats.UPC_EAN_EXTENSION
+				];
+
+        	var w = EID("qr-reader").offsetWidth/1.52;
+        
+        	window.html5QrcodeScanner = new Html5QrcodeScanner(
+            	x3, {
+    			fps: 10,
+    			qrbox: {width: w, height: w},
+    			formatsToSupport: formatsToSupport
+  			});
+                        
+            
+        	html5QrcodeScanner.render(onScanSuccess);
+    	});
+	}
+	
+
 </script>
 </head>
 </html>
