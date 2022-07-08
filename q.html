@@ -2,9 +2,10 @@
 <head>
     <title>Html-Qrcode Demo</title>
 <body>
+<div id="khung_qr-reader" style="overflow: hidden;">
 <div>
-    <div id="qr-reader" style="width:70%;"></div>
-    <div id="qr-reader-results" style="width:100%; background: green;"></div>
+    <div id="qr-reader" style="width:100%;"></div>
+</div>
 </div>
 </body>
 <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
@@ -67,13 +68,17 @@ function outputsize() {
 var h = EID('qr-reader').offsetHeight;
 if (h_max<h) h_max=h;
 
+//.style.transform
+
   var ot = (h<180) ? 0 : h_max/4;
   
-  EID('qr-reader-results').style.height = (h<180) ? h : h_max/4 + 'px';
+ EID('khung_qr-reader').style.height = (h<180) ? h : 0.65*h + 'px';
   
-  EID("qr-reader-results").style.marginTop = (h<180) ? 0 : -h_max/4 + 'px';
+  
+  //EID("qr-reader-results").style.marginTop = (h<180) ? 0 : -h_max/4 + 'px';
   
   EID('qr-reader').style.marginTop = -ot + 'px';
+  //EID('qr-reader').style.marginBottom = -ot + 'px';
  //width.value = textbox.offsetWidth
  //height.value = textbox.offsetHeight
  //alert(1);
