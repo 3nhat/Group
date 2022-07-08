@@ -2,11 +2,12 @@
 <head>
     <title>Html-Qrcode Demo</title>
 <body>
-    <div id="qr-reader" style="width:500px"></div>
+    <div id="qr-reader" style="width:100%; "></div>
     <div id="qr-reader-results"></div>
 </body>
 <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
 <script>
+function EID(NameID) {return document.getElementById(NameID);}
 Quang("]QQQ[]QQQ[qr-reader");
 function Quang(x){
     var arr = x.split("]QQQ[");
@@ -26,7 +27,7 @@ function Quang(x){
     }
 
     docReady(function () {
-        var resultContainer = document.getElementById('qr-reader-results');
+        var resultContainer = EID('qr-reader-results');
         var lastResult, countResults = 0;
         function onScanSuccess(decodedText, decodedResult) {
             if (decodedText !== lastResult) {
@@ -39,12 +40,34 @@ function Quang(x){
             
             
         }
+		
+        const formatsToSupport = [
+  Html5QrcodeSupportedFormats.QR_CODE,
+  Html5QrcodeSupportedFormats.UPC_A,
+  Html5QrcodeSupportedFormats.UPC_E,
+  Html5QrcodeSupportedFormats.UPC_EAN_EXTENSION
+];
 
+        var w = EID("qr-reader").offsetWidth/1.52;
+        
         var html5QrcodeScanner = new Html5QrcodeScanner(
-            x3, { fps: 10, qrbox: 250 });
+            x3, {
+    fps: 10,
+    qrbox: w,
+    formatsToSupport: formatsToSupport
+  });
         html5QrcodeScanner.render(onScanSuccess);
     });
 }
+
+function outputsize() {
+ //width.value = textbox.offsetWidth
+ //height.value = textbox.offsetHeight
+ //alert(1);
+}
+//outputsize();
+
+new ResizeObserver(outputsize).observe(EID('qr-reader'));
 </script>
 </head>
 </html>
