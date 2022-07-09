@@ -162,12 +162,9 @@ var h_max=161;
     	var arr = para.split("]QQQ[");
     	const nodeList = EID(arr[0]).querySelectorAll("select");
 		for (var i = 0; i < nodeList.length; i++) {
-            var sl_name = nodeList[i].innerHTML;
-            alert(sl_name);
-            if (sl_name == arr[1]) {
-            	//nodeList[i].click();
-                //break;
-            }
+            var child = nodeList[i].chidren;
+            var v = child[child.length-1].value;
+			nodeList[i].value = v;
 		}
     }
 </script>
