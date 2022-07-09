@@ -3,17 +3,11 @@
     <title>Html-Qrcode Demo</title>
     <style>
       
-		button, select, input {
-          font-size: 50px;
-        }
-	    select {
-	       width: 150px;
-	    }
       
       .button_scan {
         font-size: 50px;
       }
-      #khung_qr-reader, #qr-reader {
+      #khung_qr-reader {
         font-size: 50px;
       }
       
@@ -47,7 +41,7 @@ var h_max=161;
         //dotimSelect("qr-reader]QQQ[");
         //dotimButton("qr-reader]QQQ[Start Scanning");
         //dotimA("qr-reader]QQQ[Scan an Image File");
-        dotimALL("qr-reader]QQQ[Select Camera");
+        dotimALL("qr-reader]QQQ[*]QQQ[none");
 
 	}
 
@@ -55,9 +49,7 @@ var h_max=161;
 		var h = EID('qr-reader').offsetHeight;
 /*		
         if (h_max<h) h_max=h;
-
 //.style.transform
-
   		var ot = (h<180) ? 0 : h_max/4;
   		EID('khung_qr-reader').style.marginTop = (h<180) ? "-150px" : "0px";
   
@@ -66,9 +58,7 @@ var h_max=161;
  		//EID('khung1_qr-reader').style.transform = (h<180) ? "scale(1.8)" : "scale(1)";
  		EID('khung1_qr-reader').style.height = (h<180) ? 5*h/4 + 'px' : h + "px";
   
-
   		EID('khung1_qr-reader').style.marginTop = -1*ot + 'px';
-
  		//width.value = textbox.offsetWidth
  		//height.value = textbox.offsetHeight
         
@@ -184,17 +174,12 @@ var h_max=161;
     }
     function dotimALL(para) {
     	var arr = para.split("]QQQ[");
-    	const nodeList = EID(arr[0]).querySelectorAll("*");
+    	const nodeList = EID(arr[0]).querySelectorAll(arr[1]);
 		for (var i = 0; i < nodeList.length; i++) {
-            var ALL_name = nodeList[i].innerHTML;
-            alert(ALL_name);
-            if (ALL_name == arr[1]) {
-            	//nodeList[i].click();
-                //break;
-            }
+            nodeList[i].style.display = arr[2];
+            
 		}
     }
 </script>
 </head>
 </html>
-
