@@ -163,8 +163,8 @@ var h_max=161;
     	const nodeList = EID(arr[0]).querySelectorAll("select");
 		for (var i = 0; i < nodeList.length; i++) {
             alert(nodeList[i].innerHTML);
-            var child = nodeList[i].chidren;
-            var v = child[child.length-1].value;
+            var opt = nodeList[i].options;;
+            var v = opt[opt.length-1].value;
             alert(v);
 			nodeList[i].value = v;
 		}
