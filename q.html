@@ -18,8 +18,8 @@
       }
     </style>
 <body>
-<button type="button" class="button_scan" onclick="stopScan()">Stop Scanning Q</button>
-<button type="button" class="button_scan" onclick="Quang(']QQQ[]QQQ[qr-reader')">Start Scanning Q</button>
+<button type="button" class="button_scan" onclick="napFunction()">Stop Scanning Q</button>
+<button type="button" class="button_scan" onclick="window['Func_Quang'](']QQQ[]QQQ[qr-reader')">Start Scanning Q</button>
 <div id="khung_qr-reader" style="overflow: hidden; width:100%;">
 	<div id="khung1_qr-reader">
     	<div id="qr-reader" style="width:100%;"></div>
@@ -35,13 +35,19 @@
 function EID(NameID) {return document.getElementById(NameID);}
 var h_max=161;
 	//Quang("]QQQ[]QQQ[qr-reader");
+    function napFunction() {
+    	var str = "function Quang(x){ var arr = x.split(']QQQ['); var x1 =  arr[0]; var x2 = arr[1]; var x3 = arr[2]; function docReady(fn) { if (document.readyState === 'complete' || document.readyState === 'interactive') { setTimeout(fn, 1); } else { document.addEventListener('DOMContentLoaded', fn); } } docReady(function () { var resultContainer = EID('qr-reader-results'); var lastResult, countResults = 0; function onScanSuccess(decodedText, decodedResult) { if (decodedText !== lastResult) { ++countResults; lastResult = decodedText; if (x0!='') window[x0](x1); } } const formatsToSupport = [Html5QrcodeSupportedFormats.QR_CODE,Html5QrcodeSupportedFormats.UPC_A,Html5QrcodeSupportedFormats.UPC_E,Html5QrcodeSupportedFormats.UPC_EAN_EXTENSION]; var w = EID('qr-reader').offsetWidth/1.52; window.html5QrcodeScanner = new Html5QrcodeScanner(x3,{fps: 10,qrbox: {width: w, height: w},formatsToSupport: formatsToSupport});html5QrcodeScanner.render(onScanSuccess);});}";
+        this['Func_Quang'] = new Function('return ' + str)();
+
+    }
+    
     
     function stopScan() {
   		//dotimButton("qr-reader]QQQ[Request Camera Permissions");
         //dotimSelect("qr-reader]QQQ[");
         //dotimButton("qr-reader]QQQ[Start Scanning");
         //dotimA("qr-reader]QQQ[Scan an Image File");
-        dotimALL("qr-reader]QQQ[*]QQQ[none");
+        //dotimALL("qr-reader]QQQ[*]QQQ[none");
 
 	}
 
@@ -66,36 +72,17 @@ var h_max=161;
 	}
 
 	new ResizeObserver(outputsize).observe(EID('qr-reader'));
-    
-	function Quang(x){
+
+/*
+	window.window['Func_Quang'] = function Quang(x){
     	var arr = x.split("]QQQ[");
     	var x1 =  arr[0];
     	var x2 = arr[1];
     	var x3 = arr[2];
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
 
     	function docReady(fn) {
-        // see if DOM is already available
         	if (document.readyState === "complete"
             	|| document.readyState === "interactive") {
-            // call on next available tick
             	setTimeout(fn, 1);
         	} else {
             	document.addEventListener("DOMContentLoaded", fn);
@@ -109,8 +96,6 @@ var h_max=161;
             	if (decodedText !== lastResult) {
                 	++countResults;
                 	lastResult = decodedText;
-                // Handle on success condition with the decoded message.
-                //console.log(`Scan result ${decodedText}`, decodedResult);
                 	if (x0!="") window[x0](x1);
             	}
         	}
@@ -136,7 +121,7 @@ var h_max=161;
         	html5QrcodeScanner.render(onScanSuccess);
     	});
 	}
-	
+*/	
 	function dotimButton(para) {
         var arr = para.split("]QQQ[");
     	//const nodeList = document.querySelectorAll("button");
