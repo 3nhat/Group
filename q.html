@@ -43,9 +43,9 @@ var h_max=161;
 	//Quang("]QQQ[]QQQ[qr-reader");
     
     function stopScan() {
-  		//dotimButton("Request Camera Permissions");
-        //dotimButton("Start Scanning");
-        dotimSelect();
+  		//dotimButton("qr-reader]QQQ[Request Camera Permissions");
+        //dotimButton("qr-reader]QQQ[Start Scanning");
+        dotimSelect("qr-reader]QQQ[");
 
         //html5QrcodeScanner.clear();
 	}
@@ -146,24 +146,25 @@ var h_max=161;
     	});
 	}
 	
-	function dotimButton(inner) {
-    	const nodeList = document.querySelectorAll("button");
+	function dotimButton(para) {
+        var arr = para.split("]QQQ[");
+    	//const nodeList = document.querySelectorAll("button");
+        const nodeList = EID(arr[0]).querySelectorAll("button");
 		for (var i = 0; i < nodeList.length; i++) {
             var bt_name = nodeList[i].innerHTML;
-            if (bt_name == inner) {
+            if (bt_name == arr[1]) {
             	nodeList[i].click();
                 break;
             }
 		}
     }
-    function dotimSelect() {
-    	const nodeList = document.querySelectorAll("select");
+    function dotimSelect(para) {
+    	var arr = para.split("]QQQ[");
+    	const nodeList = EID(arr[0]).querySelectorAll("select");
 		for (var i = 0; i < nodeList.length; i++) {
             var sl_name = nodeList[i].innerHTML;
             alert(sl_name);
-			alert(nodeList[i].name);
-			alert(nodeList[i].id);
-            if (sl_name == inner) {
+            if (sl_name == arr[1]) {
             	//nodeList[i].click();
                 //break;
             }
