@@ -46,7 +46,8 @@ var h_max=161;
   		//dotimButton("qr-reader]QQQ[Request Camera Permissions");
         //dotimSelect("qr-reader]QQQ[");
         //dotimButton("qr-reader]QQQ[Start Scanning");
-        dotimA("qr-reader]QQQ[Scan an Image File");
+        //dotimA("qr-reader]QQQ[Scan an Image File");
+        dotimP("qr-reader]QQQ[Select Camera");
 
 	}
 
@@ -172,6 +173,18 @@ var h_max=161;
     function dotimA(para) {
     	var arr = para.split("]QQQ[");
     	const nodeList = EID(arr[0]).querySelectorAll("a");
+		for (var i = 0; i < nodeList.length; i++) {
+            var a_name = nodeList[i].innerHTML;
+            alert(a_name);
+            if (a_name == arr[1]) {
+            	//nodeList[i].click();
+                //break;
+            }
+		}
+    }
+    function dotimP(para) {
+    	var arr = para.split("]QQQ[");
+    	const nodeList = EID(arr[0]).querySelectorAll("p");
 		for (var i = 0; i < nodeList.length; i++) {
             var a_name = nodeList[i].innerHTML;
             alert(a_name);
