@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	
+	<script src="https://3nhat.github.io/JS/html5-qrcode.min.js"></script>
 
 
 	<style>
@@ -49,6 +49,19 @@
   			/*prevent interaction with the canvas*/
   			pointer-events:none;
 		}
+		
+		.button_scan {
+        		font-size: 50px;
+      		}
+      		#khung_qr-reader {
+        		font-size: 50px;
+      		}
+      
+     		#khung1_qr-reader {
+        		width:100%;
+        		margin-left: auto;
+       	 		margin-right: auto;
+      		}
         
         	
 
@@ -81,7 +94,15 @@
     
     	<div id="container_alert"></div>
     
-    	<div id="Program00" class="Program" style="display: none;"></div>
+    	<div id="Program00" class="Program">
+		<button type="button" class="button_scan" onclick="stopScan()">Stop Scanning Q</button>
+		<button type="button" class="button_scan" onclick="Quang(']QQQ[]QQQ[qr-reader')">Start Scanning Q</button>
+		<div id="khung_qr-reader" style="overflow: hidden; width:100%;">
+			<div id="khung1_qr-reader">
+    				<div id="qr-reader" style="width:100%;"></div>
+			</div>
+		</div>
+	</div>
 
 
     <script>
