@@ -47,7 +47,7 @@ var h_max=161;
         //dotimSelect("qr-reader]QQQ[");
         //dotimButton("qr-reader]QQQ[Start Scanning");
         //dotimA("qr-reader]QQQ[Scan an Image File");
-        dotimP("qr-reader]QQQ[Select Camera");
+        dotimALL("qr-reader]QQQ[Select Camera");
 
 	}
 
@@ -182,13 +182,13 @@ var h_max=161;
             }
 		}
     }
-    function dotimP(para) {
+    function dotimALL(para) {
     	var arr = para.split("]QQQ[");
-    	const nodeList = EID(arr[0]).querySelectorAll("p");
+    	const nodeList = EID(arr[0]).querySelectorAll("*");
 		for (var i = 0; i < nodeList.length; i++) {
-            var a_name = nodeList[i].innerHTML;
-            alert(a_name);
-            if (a_name == arr[1]) {
+            var ALL_name = nodeList[i].innerHTML;
+            alert(ALL_name);
+            if (ALL_name == arr[1]) {
             	//nodeList[i].click();
                 //break;
             }
