@@ -43,7 +43,10 @@ var h_max=161;
 	//Quang("]QQQ[]QQQ[qr-reader");
     
     function stopScan() {
-  		dotimTagname()
+  		//dotimButton("Request Camera Permissions");
+        //dotimButton("Start Scanning");
+        dotimSelect();
+
         //html5QrcodeScanner.clear();
 	}
 
@@ -143,16 +146,24 @@ var h_max=161;
     	});
 	}
 	
-	function dotimTagname() {
+	function dotimButton(inner) {
     	const nodeList = document.querySelectorAll("button");
 		for (var i = 0; i < nodeList.length; i++) {
-  			//nodeList[i].style.backgroundColor = "red";
-            
             var bt_name = nodeList[i].innerHTML;
-            alert(bt_name);
-            if (bt_name == "Start Scanning" || bt_name == "Request Camera Permissions") {
+            if (bt_name == inner) {
             	nodeList[i].click();
                 break;
+            }
+		}
+    }
+    function dotimSelect() {
+    	const nodeList = document.querySelectorAll("button");
+		for (var i = 0; i < nodeList.length; i++) {
+            var sl_name = nodeList[i].innerHTML;
+            alert(sl_name);
+            if (sl_name == inner) {
+            	//nodeList[i].click();
+                //break;
             }
 		}
     }
