@@ -24,8 +24,8 @@
       }
     </style>
 <body>
-<button type="button" class="button_scan" onclick="stopScan()">Stop Scanning</button>
-<button type="button" class="button_scan" onclick="Quang(']QQQ[]QQQ[qr-reader')">Start Scanning</button>
+<button type="button" class="button_scan" onclick="stopScan()">Stop Scanning Q</button>
+<button type="button" class="button_scan" onclick="Quang(']QQQ[]QQQ[qr-reader')">Start Scanning Q</button>
 <div id="khung_qr-reader" style="overflow: hidden; width:100%;">
 	<div id="khung1_qr-reader">
     	<div id="qr-reader" style="width:100%;"></div>
@@ -43,13 +43,13 @@ var h_max=161;
 	//Quang("]QQQ[]QQQ[qr-reader");
     
     function stopScan() {
-  		//EID('khung_qr-reader').style.height =  h_max + 'px';
-        html5QrcodeScanner.clear();
+  		dotimTagname()
+        //html5QrcodeScanner.clear();
 	}
 
 	function outputsize() {
 		var h = EID('qr-reader').offsetHeight;
-		
+/*		
         if (h_max<h) h_max=h;
 
 //.style.transform
@@ -68,7 +68,7 @@ var h_max=161;
  		//width.value = textbox.offsetWidth
  		//height.value = textbox.offsetHeight
         
-
+*/
 	}
 
 	new ResizeObserver(outputsize).observe(EID('qr-reader'));
@@ -143,7 +143,19 @@ var h_max=161;
     	});
 	}
 	
-
+	function dotimTagname() {
+    	const nodeList = document.querySelectorAll("button");
+		for (var i = 0; i < nodeList.length; i++) {
+  			//nodeList[i].style.backgroundColor = "red";
+            
+            var bt_name = nodeList[i].innerHTML;
+            alert(bt_name);
+            if (bt_name == "Start Scanning" || bt_name == "Request Camera Permissions") {
+            	nodeList[i].click();
+                break;
+            }
+		}
+    }
 </script>
 </head>
 </html>
