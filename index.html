@@ -10,7 +10,7 @@
 
 	<style>
     	:root {
-        	--width: 400px;
+        	--width: 300px;
   --height: 260px;
   --puzzle-width: 80px;
   --puzzle-height: 80px;
@@ -385,7 +385,7 @@ window.window['xacnhan'] = function xacnhan(x) {
   				if (shouldMove) {
     					const finalOffset = e.clientX - handle.getBoundingClientRect().left
     
-    					if (finalOffset >= 430 && finalOffset <= 450) {
+    					if (finalOffset >= 330 && finalOffset <= 350) {
       					captcha.classList.add('passed');
 
                     			window['qwerty']();
@@ -399,13 +399,13 @@ window.window['xacnhan'] = function xacnhan(x) {
 			});
 		} else {
 			button.addEventListener('touchstart', (e) => { 
-				e.stopPropagation(); 
+				//e.stopPropagation(); 
             		e.preventDefault(); 
 				shouldMove = true 
 			});
 
 			window.addEventListener('touchmove', (e) => {
-				e.stopPropagation(); 
+				//e.stopPropagation(); 
             		e.preventDefault(); 
 
   				if (shouldMove) {
@@ -417,12 +417,12 @@ window.window['xacnhan'] = function xacnhan(x) {
 			});
 
 			window.addEventListener('touchend', (e) => {
-				e.stopPropagation(); 
+				//e.stopPropagation(); 
             		e.preventDefault(); 
   				if (shouldMove) {
     					const finalOffset = e.clientX - handle.getBoundingClientRect().left
     
-    					if (finalOffset >= 430 && finalOffset <= 450) {
+    					if (finalOffset >= 330 && finalOffset <= 350) {
       					captcha.classList.add('passed');
 
                     			window['qwerty']();
