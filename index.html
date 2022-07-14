@@ -9,16 +9,18 @@
 
 
 	<style>
-    	:root {
-        	--width: 300px;
-  --height: 260px;
-  --puzzle-width: 80px;
-  --puzzle-height: 80px;
-  --offset-left: var(--width) * -1;
-  --moved: 0px;
-        }
     
-		body { overflow: hidden;	margin:0; width: 100%; height: 100vh;}
+    @import url("https://fonts.googleapis.com/css?family=Open+Sans");
+    
+            html {
+  height: 100%;
+}
+
+		body { 
+        	overflow: hidden;	
+            margin:0; width: 100%; height: 100vh;
+            /*background: linear-gradient(#1e130c, #9a8478);*/
+        }
         body::-webkit-scrollbar { display: none;}
 		body { -ms-overflow-style: none; scrollbar-width: none; }
 
@@ -40,120 +42,53 @@
 		#canvas{
   			/*prevent interaction with the canvas*/
   			pointer-events:none;
+            
 		}
         
-        body {
-  display: flex;
-  justify-content: center;
-  align-items: top;
-  min-height: 100vh;
-}
-
-		.khung{
-	padding-left: calc( var(--puzzle-width) * 2  );
-}
-		
-#captcha {
-  
-  
-  display: block;
-  width: var(--width);
-  height: var(--height);
-  border-radius: 4px;
-  background-image: url(https://3nhat.github.io/Image/3nhatgroup.com2.png);
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, .3);
-}
-
-#captcha::before, #captcha::after {
-  position: absolute;
-  content: '';
-  display: block;
-  width: inherit;
-  height: inherit;
-  background-image: inherit;
-  background-size: inherit;
-  background-position: inherit;
-  
-  clip-path: inset(
-    calc( (var(--height) - var(--puzzle-height)) / 2 ) /* 90px */
-    var(--puzzle-width) /* 90px */
-    calc( (var(--height) - var(--puzzle-height)) / 2 ) /* 90px */
-    calc( var(--width) - var(--puzzle-width) * 2 ) /* 230px */
-  );
-  -webkit-clip-path: inset(
-    calc( (var(--height) - var(--puzzle-height)) / 2 ) /* 90px */
-    var(--puzzle-width) /* 90px */
-    calc( (var(--height) - var(--puzzle-height)) / 2 ) /* 90px */
-    calc( var(--width) - var(--puzzle-width) * 2 ) /* 230px */
-  );
-}
-
-#captcha::after {
-  transform: translatex(
-    clamp(
-      calc( var(--width) * -1 ),
-      calc( (var(--width) * -1) + var(--moved) ),
-      calc( var(--puzzle-width) )
-    )
-  );
-  transition: .25s all ease-in-out;
-}
-
-#captcha:active::after {
-  transition: none;
-}
-
-#captcha::before {
-  background-color: rgba(0, 0, 0, .6);
-  background-blend-mode: multiply;
-}
-
-#handle {
-  width: calc( var(--width) + var(--puzzle-width) * 2 );
-  height: 30px;
-  border-radius: 18px;
-  background-color: #eee;
-  position: absolute;
-  bottom: -50px;
-  left: calc( var(--puzzle-width) * 2 * -1 );
-  box-shadow: inset 0px 0px 12px rgba(0, 0, 0, .2);
-  border: 3px solid #ccc;
-}
-
-#handle span {
-  display: block;
-  width: var(--puzzle-width);
-  height: inherit;
-  border-radius: inherit;
-  background-color: #fff;
-  box-shadow: inset 0px 0px 6px rgba(0, 0, 0, .25), 0px 2px 4px rgba(0, 0, 0, .3);
-  position: absolute;
-  cursor: move;
-  transform: translatex(
-    clamp(
-      0px,
-      var(--moved),
-      calc( var(--width) + var(--puzzle-width) )
-    )
-  );
-  
-  transition: .25s all ease-in-out;
-}
-
-#captcha:active #handle span {
-  transition: none;
-}
-
-#captcha.passed::before,
-#captcha.passed::after,
-#captcha.passed #handle {
-  opacity: 0;
-}
         
-        	
+
+  
+
+    .property-name,
+    .close-button {
+      font-family: "Open Sans", sans-serif;
+      text-transform: capitalize;
+      font-size: 1em;
+    }
+
+
+
+
+
+.container {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+ }
+ .captcha {
+        position: relative;
+ }
+ #c {
+          border-radius: 8px;
+          box-sizing: border-box;
+          color: #000;
+          box-shadow: 0 0 6px 1px currentColor;
+          transition: color 0.3s;
+        }
+#puzzle {
+          position: absolute;
+          left: 0;
+        }
+.captcha input {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+		cursor: pointer;
+          }
+ 
+ 
 
 	</style>
 </head>
@@ -163,13 +98,14 @@
     	<div id="captcha2"></div>
         <input type="text" class="CaptchaInput" placeholder="Mã xác thực" id="cpatchaTextBox"/>
 	</div>
-    <div class='khung'>
-    	<div id="captcha"  style="display: none">
-  			<div id="handle">
-    			<span></span>
-  			</div>
-		</div>
-    </div>
+	<div id="container" class="container" style="display: none">
+		<div class="captcha">
+    		<canvas id="c"></canvas>
+        	<canvas id="puzzle"></canvas>
+        	<input id="slider" type="range", value="0", min="0", step="1">
+    
+    	</div>
+	</div>
 	
 	
 
@@ -237,7 +173,10 @@ window.window['xacnhan'] = function xacnhan(x) {
   		canv.height = 70;
   		var ctx = canv.getContext("2d");
   		ctx.font = "50px Georgia";
+        ctx.fillStyle = "white";
+        
   		ctx.strokeText(captcha.join(""), 0, 50);
+        
   		code = captcha.join("");
   		EID("captcha2").appendChild(canv);
 	}
@@ -317,7 +256,7 @@ window.window['xacnhan'] = function xacnhan(x) {
     	}
     
     	
-    if (rand1 == 1) {
+    if (rand1 == 0) {
     		
     		EID('xacnhan').style.display ='block';
         
@@ -357,64 +296,108 @@ window.window['xacnhan'] = function xacnhan(x) {
     	}
     
     
-    if (rand1 == 0) {
+    if (rand1 != 0) {
+    		EID('container').style.display ='block';
+    
     		try { window.random = 1*rand; }
 		catch(err) { window.random = Math.floor(Math.random() * 100); alert(1); }
         
         	try { var str = page.trim(); }
 		catch(err) { window.page = "Group"; }
     	
-        	var r1 = Math.random() * (80 - 60) + 60;
-        	var r2 = Math.random() * (80 - 60) + 60;
-            var w = Math.random() * (280 - 250) + 250;
-        	root.style.setProperty('--puzzle-width', r1 + 'px');
-        	root.style.setProperty('--puzzle-height', r2 + 'px');
-            root.style.setProperty('--width', w + 'px');
-    
-    		EID('captcha').style.display = 'block';
-    		let shouldMove = false;
-		const captcha = document.querySelector('#captcha');
-		const handle = document.querySelector('#handle');
-		const button = document.querySelector('#handle span');
-		
-        var start = window['mobile'] ? "touchstart" : "mousedown";
-		var move = window['mobile'] ? "touchmove" : "mousemove";
-        var end = window['mobile'] ? "touchend" : "mouseup";
+        
+        let c = document.getElementById("c"),
+  ctx = c.getContext("2d"),
+  p = document.getElementById("puzzle"),
+  pctx = p.getContext("2d"),
+  slider = document.getElementById("slider"),
+  pos = { x: null, y: null },
+  delta = 5,
+  s = {
+    size: 70,
+    refresh: drawCaptcha
+  };
 
-		button.addEventListener(start, Func_start, false );
-        function Func_start(e) {e.preventDefault(); shouldMove = true; }
+let img = new Image();
+img.onload = () => {
+  c.width = img.width;
+  c.height = img.height;
 
-			window.addEventListener(move, Func_move, false );
-            function Func_move(e) {
-            		e.preventDefault(); 
+  drawCaptcha();
 
-  				if (shouldMove) {
-    					const offsetLeft = handle.getBoundingClientRect().left
-    					const buttonWidth = button.getBoundingClientRect().width
-    
-    					captcha.style.setProperty('--moved', `${e.clientX - offsetLeft - buttonWidth / 2}px`)
-  				}
-            }
+  slider.addEventListener("input", function () {
+    p.style.left = `${this.value}px`;
+  });
+  slider.addEventListener("change", function () {
+    if (Math.abs(pos.x - parseInt(p.style.left)) <= delta) {
+    	passed();
+        window['qwerty']();
+    }
+    else failed();
+  });
+};
+img.src = "http://placekitten.com/400/200";
+
+function passed() {
+  c.style.color = "#4caf50";
+}
+
+function failed() {
+  c.style.color = "#ff1744";
+}
+
+function drawGhost() {
+  ctx.fillStyle = "rgba(255, 255, 255, .5)";
+  drawShape(ctx, pos.x, pos.y);
+}
+
+function drawPuzzle() {
+  p.width = s.size;
+  p.height = s.size;
+  drawShape(pctx);
+  pctx.globalCompositeOperation = "source-in";
+  pctx.drawImage(img, pos.x, pos.y, p.width, p.height, 0, 0, p.width, p.height);
+  p.style.top = `${pos.y}px`;
+}
+
+function drawShape(ctx, x = 0, y = 0) {
+  ctx.beginPath();
+  ctx.moveTo(x, y + 0.25 * s.size);
+  ctx.lineTo(x + 0.25 * s.size, y + 0.25 * s.size);
+  ctx.arc(x + 0.5 * s.size, y + 0.25 * s.size, 0.25 * s.size, Math.PI, false);
+  ctx.moveTo(x + 0.75 * s.size, y + 0.25 * s.size);
+  ctx.lineTo(x + s.size, y + 0.25 * s.size);
+  ctx.lineTo(x + s.size, y + s.size);
+  ctx.lineTo(x, y + s.size);
+  ctx.quadraticCurveTo(
+    x + 0.5 * s.size,
+    y + 0.75 * s.size,
+    x,
+    y + 0.5 * s.size
+  );
+  ctx.lineTo(x, y + 0.25 * s.size);
+  ctx.fill();
+}
+
+function getRandomPosition() {
+  pos = {
+    x: Math.floor(s.size + (c.width - 2 * s.size) * Math.random()),
+    y: Math.floor((c.height - s.size) * Math.random())
+  };
+}
+
+function drawCaptcha() {
+  c.style.color = "#000";
+  p.style.left = slider.value = 0;
+  slider.setAttribute("max", Math.round(img.width - s.size));
+  ctx.clearRect(0, 0, c.width, c.height);
+  ctx.drawImage(img, 0, 0);
+  getRandomPosition();
+  drawPuzzle();
+  drawGhost();
+}
             
-
-			window.addEventListener(end, Func_end, false);
-            function Func_end(e) {
-		    e.preventDefault();
-            	if (shouldMove) {
-    					const finalOffset = e.clientX - handle.getBoundingClientRect().left
-    
-    					if (finalOffset >= w + 30 && finalOffset <= w +38) {
-      					captcha.classList.add('passed');
-
-                    			window['qwerty']();
-    					} else {
-      					captcha.style.setProperty('--moved', '0px');
-    					}
-    
-    					shouldMove = false
-  				}
-            }
-	
+            
     }
     
 
