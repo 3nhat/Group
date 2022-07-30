@@ -6,7 +6,6 @@
 	<meta charset="utf-8">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script type="application/javascript" src="https://api64.ipify.org?format=jsonp&callback=getip"></script>
 
 
 	<style>
@@ -128,12 +127,7 @@ function EID(NameID) {return document.getElementById(NameID);}
 
 
 
-window.addEventListener('DOMContentLoaded', (event) => { 
-	$.getJSON('https://api64.ipify.org?format=json', function(data){
-    		alert(data.ip);
-	});
-	window['xacnhan']('createCaptcha'); 
-});
+window.addEventListener('DOMContentLoaded', (event) => { window['xacnhan']('createCaptcha'); });
 
 
 	   
